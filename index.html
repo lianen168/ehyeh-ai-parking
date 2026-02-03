@@ -81,8 +81,7 @@
         }
 
         .revelation {
-            /* 更大的垂直空间，让文本更往下 */
-            margin: 15rem auto 10rem auto;
+            margin: 20rem auto 15rem auto;
             font-size: clamp(2rem, 8vw, 4rem);
             letter-spacing: 0.1em;
             line-height: 1.5;
@@ -90,75 +89,60 @@
 
         .revelation span {
             display: block;
-            opacity: 0; /* 初始不可见 */
+            opacity: 0;
         }
         
         .iam {
-            font-family: 'Times New Roman', Times, serif; /* 古老、宣告式的字体 */
+            font-family: 'Times New Roman', Times, serif;
             animation: fadeIn 4s forwards;
         }
 
         .iwillbe {
-            font-family: Helvetica, Arial, sans-serif; /* 现代、潜力的字体 */
-            animation: fadeIn 4s 2.2s forwards; /* 延迟 2.2 秒 */
+            font-family: Helvetica, Arial, sans-serif;
+            animation: fadeIn 4s 2.2s forwards;
         }
 
         @keyframes fadeIn {
             to { opacity: 1; }
         }
         
-        /* JavaScript 添加此样式以点燃火焰 */
         .is-burning {
-            color: transparent !important;
-            background: linear-gradient(180deg, 
-                var(--fire-yellow) 0%, 
-                var(--gold) 20%, 
-                #ff8c00 40%, 
-                var(--fire-orange) 60%, 
-                var(--fire-red) 80%, 
-                #8b0000 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            animation: flame-flicker 2s infinite alternate;
-            text-shadow: 
-                0 0 10px rgba(255, 215, 0, 0.5),
-                0 0 20px rgba(255, 140, 0, 0.5),
-                0 0 30px rgba(255, 72, 0, 0.5),
-                0 0 40px rgba(255, 0, 0, 0.5);
+            color: #ffd700 !important;
+            animation: flame-flicker 1.5s infinite alternate;
         }
 
         @keyframes flame-flicker {
             0%, 100% {
+                color: #ffd700;
                 text-shadow: 
-                    0 0 10px rgba(255, 215, 0, 0.7),
-                    0 0 20px rgba(255, 140, 0, 0.7),
-                    0 0 30px rgba(255, 72, 0, 0.7),
-                    0 0 40px rgba(255, 0, 0, 0.7),
-                    0 0 50px rgba(255, 0, 0, 0.5);
+                    0 0 10px rgba(255, 215, 0, 0.8),
+                    0 0 20px rgba(255, 140, 0, 0.8),
+                    0 0 30px rgba(255, 72, 0, 0.8),
+                    0 0 40px rgba(255, 0, 0, 0.8);
             }
             25% {
+                color: #ff8c00;
                 text-shadow: 
-                    0 0 12px rgba(255, 215, 0, 0.8),
-                    0 0 22px rgba(255, 140, 0, 0.8),
-                    0 0 32px rgba(255, 72, 0, 0.8),
-                    0 0 42px rgba(255, 0, 0, 0.8),
-                    0 0 52px rgba(255, 0, 0, 0.6);
+                    0 0 12px rgba(255, 215, 0, 0.9),
+                    0 0 22px rgba(255, 140, 0, 0.9),
+                    0 0 32px rgba(255, 72, 0, 0.9),
+                    0 0 42px rgba(255, 0, 0, 0.9);
             }
             50% {
+                color: #ff4500;
                 text-shadow: 
-                    0 0 8px rgba(255, 215, 0, 0.6),
-                    0 0 18px rgba(255, 140, 0, 0.6),
-                    0 0 28px rgba(255, 72, 0, 0.6),
-                    0 0 38px rgba(255, 0, 0, 0.6),
-                    0 0 48px rgba(255, 0, 0, 0.4);
+                    0 0 8px rgba(255, 215, 0, 0.7),
+                    0 0 18px rgba(255, 140, 0, 0.7),
+                    0 0 28px rgba(255, 72, 0, 0.7),
+                    0 0 38px rgba(255, 0, 0, 0.7);
             }
             75% {
+                color: #ff0000;
                 text-shadow: 
-                    0 0 15px rgba(255, 215, 0, 0.9),
-                    0 0 25px rgba(255, 140, 0, 0.9),
-                    0 0 35px rgba(255, 72, 0, 0.9),
-                    0 0 45px rgba(255, 0, 0, 0.9),
-                    0 0 55px rgba(255, 0, 0, 0.7);
+                    0 0 15px rgba(255, 215, 0, 1),
+                    0 0 25px rgba(255, 140, 0, 1),
+                    0 0 35px rgba(255, 72, 0, 1),
+                    0 0 45px rgba(255, 0, 0, 1);
             }
         }
         
@@ -270,14 +254,11 @@
             });
         }
         
-        // --- JavaScript for the Ignition Sequence ---
         document.addEventListener('DOMContentLoaded', () => {
             const iamElement = document.querySelector('.iam');
             const iwillbeElement = document.querySelector('.iwillbe');
 
-            // 监听 "I WILL BE" 动画结束事件
             iwillbeElement.addEventListener('animationend', () => {
-                // 添加火焰效果类
                 iamElement.classList.add('is-burning');
                 iwillbeElement.classList.add('is-burning');
             });
