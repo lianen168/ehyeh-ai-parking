@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ehyeh.ai | The First Utterance</title>
+    <meta name="description" content="ehyeh.ai: The domain that translates 'I WILL BE' into the language of AGI. A foundational asset for the future of self-aware intelligence.">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #000000;
+            --bg-gradient: radial-gradient(circle at 50% 50%, #110f1a 0%, #000 80%);
+            --gold: #FFD700;
+            --text-light: #f0f0f0;
+            --text-muted: #888;
+            --border-glow: rgba(255, 215, 0, 0.2);
+        }
+        body { 
+            font-family: 'Times New Roman', Times, serif; 
+            color: var(--text-light); 
+            background: var(--bg);
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 40px 20px; 
+            text-align: center; 
+            position: relative; 
+            overflow: hidden;
+        }
+        .background-fx {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--bg-gradient);
+            z-index: -1;
+        }
+        .container { 
+            max-width: 800px; 
+            width: 100%; 
+            z-index: 1; 
+        }
+        h1 { 
+            font-size: clamp(4rem, 12vw, 8rem); 
+            font-weight: 300; 
+            letter-spacing: 0.05em; 
+            margin-bottom: 2rem; 
+            line-height: 1;
+        }
+        .ehyeh-dynamic {
+            font-family: serif;
+            display: inline-block;
+            animation: breathe-divine 8s infinite ease-in-out;
+        }
+        .ai-dynamic {
+            font-family: monospace;
+            display: inline-block;
+            color: var(--gold);
+            animation: pulse-digital 3s infinite ease-in-out;
+        }
+        @keyframes breathe-divine {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.01); }
+        }
+        @keyframes pulse-digital {
+            0%, 100% { opacity: 0.6; text-shadow: 0 0 5px var(--gold); }
+            50% { opacity: 1; text-shadow: 0 0 20px var(--gold); }
+        }
+
+        #canvas-container {
+            width: 250px;
+            height: 250px;
+            margin: 2rem auto 2rem auto;
+            filter: drop-shadow(0 0 40px var(--border-glow));
+            animation: float 10s ease-in-out infinite;
+        }
+        @keyframes float {
+            50% { transform: translateY(-20px); }
+        }
+
+        .revelation {
+            font-family: monospace;
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            margin: 2rem auto;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            line-height: 1.8;
+        }
+        .revelation span { display: block; }
+        .revelation .iam { animation: fadeIn 4s forwards; }
+        .revelation .iwillbe { opacity: 0; animation: fadeIn 4s 2s forwards; }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .purchase-section {
+            background: rgba(10, 10, 10, 0.5);
+            border: 1px solid var(--border-glow);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px 30px;
+            margin-top: 3rem;
+        }
+        .price {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--text-light);
+            letter-spacing: 0.05em;
+        }
+        .price-justification {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-style: italic;
+            letter-spacing: 0.05em;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: normal;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            letter-spacing: 0.1em;
+        }
+        .btn-acquire {
+            background: var(--gold);
+            color: #000;
+            border: none;
+            margin-right: 15px;
+        }
+        .btn-acquire:hover {
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+        .btn-inquire {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+        .btn-inquire:hover {
+            background: var(--border-glow);
+            color: var(--text-light);
+        }
+        .footer { 
+            margin-top: 4rem;
+            font-size: 0.8rem; 
+            opacity: 0.4; 
+        }
+    </style>
+</head>
+<body>
+    <div class="background-fx"></div>
+    <div class="container">
+        <h1>
+            <span class="ehyeh-dynamic">ehyeh</span><span class="ai-dynamic">.ai</span>
+        </h1>
+
+        <div id="canvas-container"></div>
+
+        <div class="revelation">
+            <span class="iam">"I am AI."</span>
+            <span class="iwillbe">"I WILL BE AI."</span>
+        </div>
+
+        <div class="purchase-section">
+            <div class="price">$220,000 USD</div>
+            <div class="price-justification">A valuation derived from the 22 sacred letters of the foundation.</div>
+            <button onclick="window.open('https://www.spaceship.com/s/buy/ehyeh.ai/S9KcaCEDFNdBvsRT', '_blank')" class="btn btn-acquire">Acquire</button>
+            <button id="inquireBtn" onclick="copyEmail()" class="btn btn-inquire">Inquire</button>
+        </div>
+    </div>
+    <div class="footer">
+        © <span id="currentYear"></span> ehyeh.ai — The address for what is to come.
+    </div>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function copyEmail() {
+            const email = "joshua369x@gmail.com";
+            navigator.clipboard.writeText(email).then(() => {
+                const btn = document.getElementById('inquireBtn');
+                const originalText = btn.innerText;
+                btn.innerText = "Email Copied";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                }, 2500);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert("Please email: " + email);
+            });
+        }
+    </script>
+    <script>
+    const sketch = (p) => {
+        const PARTICLE_COUNT = 1000;
+        const PARTICLE_COLOR = [255, 215, 0];
+        const MAX_SPEED = 0.8;
+        const MOUSE_REPEL_RADIUS = 120;
+        const MOUSE_REPEL_STRENGTH = 1.5;
+
+        let particles = [];
+        let attractors = [];
+        let canvasSize = 250;
+
+        class Particle {
+            constructor() {
+                this.pos = p.createVector(p.random(canvasSize), p.random(canvasSize));
+                this.vel = p5.Vector.random2D().mult(MAX_SPEED);
+                this.acc = p.createVector();
+                this.noiseOffset = p.createVector(p.random(1000), p.random(1000));
+            }
+            applyForce(force) { this.acc.add(force); }
+            update() {
+                this.vel.add(this.acc);
+                this.vel.limit(MAX_SPEED);
+                this.pos.add(this.vel);
+                this.acc.mult(0);
+            }
+            show() {
+                p.strokeWeight(1.2);
+                p.stroke(PARTICLE_COLOR[0], PARTICLE_COLOR[1], PARTICLE_COLOR[2], 90);
+                p.point(this.pos.x, this.pos.y);
+            }
+            behaviors() {
+                let seekForce = this.seek(this.findClosestAttractor());
+                seekForce.mult(0.1);
+                this.applyForce(seekForce);
+
+                let canvasElem = document.getElementById('canvas-container');
+                let rect = canvasElem.getBoundingClientRect();
+                let mouse = p.createVector(p.mouseX - rect.left, p.mouseY - rect.top);
+
+                if (mouse.x > 0 && mouse.x < canvasSize && mouse.y > 0 && mouse.y < canvasSize) {
+                    let d = p.dist(this.pos.x, this.pos.y, mouse.x, mouse.y);
+                    if (d < MOUSE_REPEL_RADIUS) {
+                        let repel = p5.Vector.sub(this.pos, mouse);
+                        repel.setMag(p.map(d, 0, MOUSE_REPEL_RADIUS, MOUSE_REPEL_STRENGTH, 0));
+                        this.applyForce(repel);
+                    }
+                }
+                
+                let noiseForce = p.createVector(
+                    p.map(p.noise(this.noiseOffset.x), 0, 1, -0.05, 0.05),
+                    p.map(p.noise(this.noiseOffset.y), 0, 1, -0.05, 0.05)
+                );
+                this.applyForce(noiseForce);
+                this.noiseOffset.add(0.01, 0.01);
+            }
+            findClosestAttractor() {
+                let closestDist = Infinity;
+                let closest = null;
+                for (let a of attractors) {
+                    let d = p.dist(this.pos.x, this.pos.y, a.x, a.y);
+                    if (d < closestDist) { closestDist = d; closest = a; }
+                }
+                return closest;
+            }
+            seek(target) {
+                if (!target) return p.createVector(0, 0);
+                let desired = p5.Vector.sub(target, this.pos);
+                desired.setMag(MAX_SPEED);
+                let steer = p5.Vector.sub(desired, this.vel);
+                steer.limit(0.1);
+                return steer;
+            }
+        }
+
+        p.setup = () => {
+            let canvas = p.createCanvas(canvasSize, canvasSize);
+            canvas.parent('canvas-container');
+            let cX = canvasSize / 2;
+            let cY = canvasSize / 2;
+
+            // --- Define a Sacred Geometric / Sigil Shape ---
+            let mainRadius = 80;
+            // Outer circle
+            for (let a = 0; a < p.TWO_PI; a += 0.05) {
+                let r = mainRadius + p.noise(a * 5) * 15;
+                attractors.push(p.createVector(cX + p.cos(a) * r, cY + p.sin(a) * r));
+            }
+            // Inner circle (hollow effect)
+            let innerRadius = 40;
+             for (let a = 0; a < p.TWO_PI; a += 0.1) {
+                let r = innerRadius + p.noise(a * 8 + 10) * 10;
+                attractors.push(p.createVector(cX + p.cos(a) * r, cY + p.sin(a) * r));
+            }
+            // Radiating lines (The "utterance")
+            for(let i=0; i<8; i++){
+                let angle = p.map(i, 0, 8, 0, p.TWO_PI);
+                for(let r=innerRadius; r<mainRadius; r+=4){
+                    attractors.push(p.createVector(cX + p.cos(angle)*r, cY + p.sin(angle)*r));
+                }
+            }
+            
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                particles.push(new Particle());
+            }
+        };
+
+        p.draw = () => {
+            p.clear();
+            p.background(0, 0, 0, 0);
+            for (let p of particles) {
+                p.behaviors();
+                p.update();
+                p.show();
+            }
+        };
+    };
+    new p5(sketch);
+    </script>
+</body>
+</html>
