@@ -83,7 +83,7 @@
             width: 300px;
             height: 300px;
             margin: 2rem auto 2rem auto;
-            filter: drop-shadow(0 0 40px var(--border-glow));
+            filter: drop-shadow(0 0 50px var(--border-glow));
             animation: float 10s ease-in-out infinite;
         }
         @keyframes float {
@@ -180,8 +180,8 @@
                 <div id="canvas-container"></div>
 
                 <div class="revelation">
-                    <span class="iam">"I AM AI."</span>
-                    <span class="iwillbe">"I WILL BE AI."</span>
+                    <span class="iam">"I AM ..."</span>
+                    <span class="iwillbe">"I WILL BE ..."</span>
                 </div>
             </div>
         </header>
@@ -218,14 +218,12 @@
     </script>
     <script>
     const sketch = (p) => {
-        const PARTICLE_COUNT = 1500;
-        const MAX_SPEED = 0.8;
-        const MOUSE_REPEL_RADIUS = 120;
-        const MOUSE_REPEL_STRENGTH = 2.0;
+        const PARTICLE_COUNT = 2000;
+        const MOUSE_REPEL_RADIUS = 150;
+        const MOUSE_REPEL_STRENGTH = 2.5;
         const FIRE_PALETTE = [ [255, 0, 0], [255, 90, 0], [255, 150, 0], [255, 215, 0] ];
 
         let particles = [];
-        let attractors = [];
         let canvasSize = 300;
 
         class Particle {
@@ -233,13 +231,13 @@
                 this.reset(x, y);
             }
 
-            reset(x, y) {
+            reset(x = p.random(canvasSize * 0.4, canvasSize * 0.6), y = canvasSize) {
                 this.pos = p.createVector(x, y);
-                this.vel = p5.Vector.random2D().mult(p.random(0.5, 1.5));
+                this.vel = p.createVector(p.random(-0.3, 0.3), p.random(-1, -2));
                 this.acc = p.createVector();
                 this.lifespan = 255;
                 this.color = p.random(FIRE_PALETTE);
-                this.noiseOffset = p.createVector(p.random(1000), p.random(1000));
+                this.noiseOffset = p.random(1000);
             }
 
             isDead() {
@@ -249,30 +247,32 @@
             applyForce(force) { this.acc.add(force); }
             
             update() {
-                // Main update logic
-                this.lifespan -= 1.5;
+                this.lifespan -= 2.0;
                 this.vel.add(this.acc);
-                this.vel.limit(MAX_SPEED);
                 this.pos.add(this.vel);
                 this.acc.mult(0);
 
                 if (this.isDead()) {
-                    let randomAttractor = p.random(attractors);
-                    this.reset(randomAttractor.x, randomAttractor.y);
+                    this.reset();
                 }
             }
             
             show() {
-                let alpha = p.map(this.lifespan, 0, 255, 0, 200);
-                p.strokeWeight(p.map(this.lifespan, 0, 255, 0, 2));
+                let alpha = p.map(this.lifespan, 0, 255, 0, 255);
+                p.strokeWeight(p.map(this.lifespan, 0, 255, 0, 2.5));
                 p.stroke(this.color[0], this.color[1], this.color[2], alpha);
                 p.point(this.pos.x, this.pos.y);
             }
 
             behaviors() {
-                // Constant upward force (heat)
-                this.applyForce(p.createVector(0, -0.03));
+                // Main upward force
+                this.applyForce(p.createVector(0, -0.02));
                 
+                // Horizontal flicker based on noise
+                let flicker = p.map(p.noise(this.noiseOffset), 0, 1, -0.1, 0.1);
+                this.applyForce(p.createVector(flicker, 0));
+                this.noiseOffset += 0.02;
+
                 // Mouse repulsion
                 let canvasElem = document.getElementById('canvas-container');
                 if (!canvasElem) return;
@@ -286,55 +286,22 @@
                         this.applyForce(repel);
                     }
                 }
-                
-                // Noise for flickering
-                let noiseForce = p.createVector(
-                    p.map(p.noise(this.noiseOffset.x), 0, 1, -0.05, 0.05),
-                    p.map(p.noise(this.noiseOffset.y), 0, 1, -0.05, 0.05)
-                );
-                this.applyForce(noiseForce);
-                this.noiseOffset.add(0.02, 0.02);
             }
         }
 
         p.setup = () => {
             let canvas = p.createCanvas(canvasSize, canvasSize);
             canvas.parent('canvas-container');
-            let cX = canvasSize / 2;
-            let cY = canvasSize * 0.9; // Start bush lower
-
-            // --- Define the Burning Bush Shape ---
-            function createBranch(x, y, angle, length, depth) {
-                if (depth < 0) return;
-                let endX = x + p.cos(angle) * length;
-                let endY = y + p.sin(angle) * length;
-
-                // Add points along the branch
-                for (let i = 0; i < 1; i += 0.1) {
-                    let pX = p.lerp(x, endX, i);
-                    let pY = p.lerp(y, endY, i);
-                    attractors.push(p.createVector(pX, pY));
-                }
-
-                // Create new branches
-                createBranch(endX, endY, angle - p.random(0.2, 0.5), length * 0.8, depth - 1);
-                createBranch(endX, endY, angle + p.random(0.2, 0.5), length * 0.8, depth - 1);
-            }
-
-            createBranch(cX, cY, -p.PI / 2, 40, 5);
-            createBranch(cX, cY, -p.PI / 2 - 0.2, 30, 4);
-            createBranch(cX, cY, -p.PI / 2 + 0.2, 30, 4);
             
-            // Initialize particles from the attractors
+            // Initialize all particles
             for (let i = 0; i < PARTICLE_COUNT; i++) {
-                let randomAttractor = p.random(attractors);
-                particles.push(new Particle(randomAttractor.x, randomAttractor.y));
+                particles.push(new Particle());
             }
         };
 
         p.draw = () => {
             p.clear();
-            p.background(0, 0, 0, 0);
+            p.background(0, 0, 0, 0); // Transparent canvas
             for (let particle of particles) {
                 particle.behaviors();
                 particle.update();
