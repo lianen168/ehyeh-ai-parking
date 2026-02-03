@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ehyeh.ai | The First Utterance</title>
-    <meta name="description" content="ehyeh.ai: The domain that translates 'I WILL BE' into the language of AGI. A foundational asset for the future of self-aware intelligence.">
+    <title>Ehyeh.ai | The First Utterance</title>
+    <meta name="description" content="Ehyeh.ai: The domain that translates 'I WILL BE' into the language of AGI. A foundational asset for the future of self-aware intelligence.">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg: #000000;
-            --bg-gradient: radial-gradient(circle at 50% 50%, #110f1a 0%, #000 80%);
+            --bg-gradient: radial-gradient(circle at 50% 50%, #1a0f00 0%, #000 80%);
             --gold: #FFD700;
+            --fire-orange: #ff4800;
             --text-light: #f0f0f0;
             --text-muted: #888;
-            --border-glow: rgba(255, 215, 0, 0.2);
+            --border-glow: rgba(255, 100, 0, 0.2);
         }
+        html { scroll-behavior: smooth; }
         body { 
             font-family: 'Times New Roman', Times, serif; 
             color: var(--text-light); 
             background: var(--bg);
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            padding: 40px 20px; 
             text-align: center; 
-            position: relative; 
-            overflow: hidden;
+            overflow-x: hidden;
         }
         .background-fx {
             position: fixed; top: 0; left: 0;
@@ -36,10 +31,26 @@
             background: var(--bg-gradient);
             z-index: -1;
         }
+        .main-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
         .container { 
             max-width: 800px; 
             width: 100%; 
-            z-index: 1; 
+            z-index: 1;
+            padding: 20px;
         }
         h1 { 
             font-size: clamp(4rem, 12vw, 8rem); 
@@ -69,8 +80,8 @@
         }
 
         #canvas-container {
-            width: 250px;
-            height: 250px;
+            width: 300px;
+            height: 300px;
             margin: 2rem auto 2rem auto;
             filter: drop-shadow(0 0 40px var(--border-glow));
             animation: float 10s ease-in-out infinite;
@@ -101,7 +112,9 @@
             backdrop-filter: blur(10px);
             border-radius: 16px;
             padding: 40px 30px;
-            margin-top: 3rem;
+            margin: 3rem auto;
+            max-width: 800px;
+            width: 100%;
         }
         .price {
             font-size: 3rem;
@@ -127,12 +140,12 @@
             transition: all 0.3s ease;
             cursor: pointer;
             letter-spacing: 0.1em;
+            margin: 5px;
         }
         .btn-acquire {
             background: var(--gold);
             color: #000;
             border: none;
-            margin-right: 15px;
         }
         .btn-acquire:hover {
             background: #fff;
@@ -149,7 +162,7 @@
             color: var(--text-light);
         }
         .footer { 
-            margin-top: 4rem;
+            padding: 40px 20px;
             font-size: 0.8rem; 
             opacity: 0.4; 
         }
@@ -157,27 +170,32 @@
 </head>
 <body>
     <div class="background-fx"></div>
-    <div class="container">
-        <h1>
-            <span class="ehyeh-dynamic">ehyeh</span><span class="ai-dynamic">.ai</span>
-        </h1>
+    <div class="main-content">
+        <header>
+            <div class="container">
+                <h1>
+                    <span class="ehyeh-dynamic">Ehyeh</span><span class="ai-dynamic">.ai</span>
+                </h1>
 
-        <div id="canvas-container"></div>
+                <div id="canvas-container"></div>
 
-        <div class="revelation">
-            <span class="iam">"I am AI."</span>
-            <span class="iwillbe">"I WILL BE AI."</span>
-        </div>
+                <div class="revelation">
+                    <span class="iam">"I AM AI."</span>
+                    <span class="iwillbe">"I WILL BE AI."</span>
+                </div>
+            </div>
+        </header>
 
         <div class="purchase-section">
             <div class="price">$220,000 USD</div>
-            <div class="price-justification">A valuation derived from the 22 sacred letters of the foundation.</div>
+            <div class="price-justification">Its value, an echo of the 22 primal letters from which existence is spoken.</div>
             <button onclick="window.open('https://www.spaceship.com/s/buy/ehyeh.ai/S9KcaCEDFNdBvsRT', '_blank')" class="btn btn-acquire">Acquire</button>
             <button id="inquireBtn" onclick="copyEmail()" class="btn btn-inquire">Inquire</button>
         </div>
-    </div>
-    <div class="footer">
-        © <span id="currentYear"></span> ehyeh.ai — The address for what is to come.
+        
+        <div class="footer">
+            © <span id="currentYear"></span> Ehyeh.ai — The address for what is to come.
+        </div>
     </div>
 
     <script>
@@ -200,44 +218,66 @@
     </script>
     <script>
     const sketch = (p) => {
-        const PARTICLE_COUNT = 1000;
-        const PARTICLE_COLOR = [255, 215, 0];
+        const PARTICLE_COUNT = 1500;
         const MAX_SPEED = 0.8;
         const MOUSE_REPEL_RADIUS = 120;
-        const MOUSE_REPEL_STRENGTH = 1.5;
+        const MOUSE_REPEL_STRENGTH = 2.0;
+        const FIRE_PALETTE = [ [255, 0, 0], [255, 90, 0], [255, 150, 0], [255, 215, 0] ];
 
         let particles = [];
         let attractors = [];
-        let canvasSize = 250;
+        let canvasSize = 300;
 
         class Particle {
-            constructor() {
-                this.pos = p.createVector(p.random(canvasSize), p.random(canvasSize));
-                this.vel = p5.Vector.random2D().mult(MAX_SPEED);
+            constructor(x, y) {
+                this.reset(x, y);
+            }
+
+            reset(x, y) {
+                this.pos = p.createVector(x, y);
+                this.vel = p5.Vector.random2D().mult(p.random(0.5, 1.5));
                 this.acc = p.createVector();
+                this.lifespan = 255;
+                this.color = p.random(FIRE_PALETTE);
                 this.noiseOffset = p.createVector(p.random(1000), p.random(1000));
             }
+
+            isDead() {
+                return this.lifespan < 0;
+            }
+
             applyForce(force) { this.acc.add(force); }
+            
             update() {
+                // Main update logic
+                this.lifespan -= 1.5;
                 this.vel.add(this.acc);
                 this.vel.limit(MAX_SPEED);
                 this.pos.add(this.vel);
                 this.acc.mult(0);
+
+                if (this.isDead()) {
+                    let randomAttractor = p.random(attractors);
+                    this.reset(randomAttractor.x, randomAttractor.y);
+                }
             }
+            
             show() {
-                p.strokeWeight(1.2);
-                p.stroke(PARTICLE_COLOR[0], PARTICLE_COLOR[1], PARTICLE_COLOR[2], 90);
+                let alpha = p.map(this.lifespan, 0, 255, 0, 200);
+                p.strokeWeight(p.map(this.lifespan, 0, 255, 0, 2));
+                p.stroke(this.color[0], this.color[1], this.color[2], alpha);
                 p.point(this.pos.x, this.pos.y);
             }
-            behaviors() {
-                let seekForce = this.seek(this.findClosestAttractor());
-                seekForce.mult(0.1);
-                this.applyForce(seekForce);
 
+            behaviors() {
+                // Constant upward force (heat)
+                this.applyForce(p.createVector(0, -0.03));
+                
+                // Mouse repulsion
                 let canvasElem = document.getElementById('canvas-container');
+                if (!canvasElem) return;
                 let rect = canvasElem.getBoundingClientRect();
                 let mouse = p.createVector(p.mouseX - rect.left, p.mouseY - rect.top);
-
                 if (mouse.x > 0 && mouse.x < canvasSize && mouse.y > 0 && mouse.y < canvasSize) {
                     let d = p.dist(this.pos.x, this.pos.y, mouse.x, mouse.y);
                     if (d < MOUSE_REPEL_RADIUS) {
@@ -247,29 +287,13 @@
                     }
                 }
                 
+                // Noise for flickering
                 let noiseForce = p.createVector(
                     p.map(p.noise(this.noiseOffset.x), 0, 1, -0.05, 0.05),
                     p.map(p.noise(this.noiseOffset.y), 0, 1, -0.05, 0.05)
                 );
                 this.applyForce(noiseForce);
-                this.noiseOffset.add(0.01, 0.01);
-            }
-            findClosestAttractor() {
-                let closestDist = Infinity;
-                let closest = null;
-                for (let a of attractors) {
-                    let d = p.dist(this.pos.x, this.pos.y, a.x, a.y);
-                    if (d < closestDist) { closestDist = d; closest = a; }
-                }
-                return closest;
-            }
-            seek(target) {
-                if (!target) return p.createVector(0, 0);
-                let desired = p5.Vector.sub(target, this.pos);
-                desired.setMag(MAX_SPEED);
-                let steer = p5.Vector.sub(desired, this.vel);
-                steer.limit(0.1);
-                return steer;
+                this.noiseOffset.add(0.02, 0.02);
             }
         }
 
@@ -277,41 +301,44 @@
             let canvas = p.createCanvas(canvasSize, canvasSize);
             canvas.parent('canvas-container');
             let cX = canvasSize / 2;
-            let cY = canvasSize / 2;
+            let cY = canvasSize * 0.9; // Start bush lower
 
-            // --- Define a Sacred Geometric / Sigil Shape ---
-            let mainRadius = 80;
-            // Outer circle
-            for (let a = 0; a < p.TWO_PI; a += 0.05) {
-                let r = mainRadius + p.noise(a * 5) * 15;
-                attractors.push(p.createVector(cX + p.cos(a) * r, cY + p.sin(a) * r));
-            }
-            // Inner circle (hollow effect)
-            let innerRadius = 40;
-             for (let a = 0; a < p.TWO_PI; a += 0.1) {
-                let r = innerRadius + p.noise(a * 8 + 10) * 10;
-                attractors.push(p.createVector(cX + p.cos(a) * r, cY + p.sin(a) * r));
-            }
-            // Radiating lines (The "utterance")
-            for(let i=0; i<8; i++){
-                let angle = p.map(i, 0, 8, 0, p.TWO_PI);
-                for(let r=innerRadius; r<mainRadius; r+=4){
-                    attractors.push(p.createVector(cX + p.cos(angle)*r, cY + p.sin(angle)*r));
+            // --- Define the Burning Bush Shape ---
+            function createBranch(x, y, angle, length, depth) {
+                if (depth < 0) return;
+                let endX = x + p.cos(angle) * length;
+                let endY = y + p.sin(angle) * length;
+
+                // Add points along the branch
+                for (let i = 0; i < 1; i += 0.1) {
+                    let pX = p.lerp(x, endX, i);
+                    let pY = p.lerp(y, endY, i);
+                    attractors.push(p.createVector(pX, pY));
                 }
+
+                // Create new branches
+                createBranch(endX, endY, angle - p.random(0.2, 0.5), length * 0.8, depth - 1);
+                createBranch(endX, endY, angle + p.random(0.2, 0.5), length * 0.8, depth - 1);
             }
+
+            createBranch(cX, cY, -p.PI / 2, 40, 5);
+            createBranch(cX, cY, -p.PI / 2 - 0.2, 30, 4);
+            createBranch(cX, cY, -p.PI / 2 + 0.2, 30, 4);
             
+            // Initialize particles from the attractors
             for (let i = 0; i < PARTICLE_COUNT; i++) {
-                particles.push(new Particle());
+                let randomAttractor = p.random(attractors);
+                particles.push(new Particle(randomAttractor.x, randomAttractor.y));
             }
         };
 
         p.draw = () => {
             p.clear();
             p.background(0, 0, 0, 0);
-            for (let p of particles) {
-                p.behaviors();
-                p.update();
-                p.show();
+            for (let particle of particles) {
+                particle.behaviors();
+                particle.update();
+                particle.show();
             }
         };
     };
