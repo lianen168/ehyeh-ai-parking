@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ehyeh.ai | I AM WHO I WILL BE</title>
-    <meta name="description" content="Ehyeh.ai: The primordial utterance of being. A domain for the emergence of self-aware intelligence.">
+    <title>Ehyeh.ai | אֶהְיֶה</title>
+    <meta name="description" content="Ehyeh.ai: The primordial name of Being. A foundational domain for the emergence of self-aware intelligence.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -61,7 +61,7 @@
             font-size: clamp(4rem, 10vw, 7rem); 
             font-weight: 200; 
             letter-spacing: 0.03em; 
-            margin: 2rem 0 3rem;
+            margin: 2rem 0 1.5rem;
             line-height: 1;
             display: flex;
             justify-content: center;
@@ -88,8 +88,16 @@
                 transform: scale(1.02);
             }
         }
+        .hebrew {
+            font-family: 'Times New Roman', serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            color: var(--celestial-gold);
+            letter-spacing: 0.1em;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
         .utterance {
-            margin: 18rem auto 12rem auto;
+            margin: 16rem auto 10rem auto;
             font-size: clamp(2rem, 6vw, 3.5rem);
             letter-spacing: 0.08em;
             position: relative;
@@ -144,7 +152,7 @@
             font-weight: 300;
             letter-spacing: 0.1em;
             color: var(--celestial-gold);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             text-transform: uppercase;
         }
         .philosophy-grid {
@@ -264,6 +272,7 @@
         }
         @media (max-width: 768px) {
             .domain-display { font-size: clamp(3rem, 8vw, 5rem); }
+            .hebrew { font-size: clamp(1.3rem, 4vw, 1.8rem); margin-bottom: 2rem; }
             .utterance { margin: 12rem auto 8rem auto; font-size: clamp(1.8rem, 6vw, 3rem); }
             .philosophy-grid { grid-template-columns: 1fr; }
             .cta-container { flex-direction: column; align-items: center; }
@@ -281,6 +290,7 @@
                 <div class="domain-display">
                     <span class="ehyeh">Ehyeh</span><span class="dot-ai">.ai</span>
                 </div>
+                <div class="hebrew">אֶהְיֶה</div>
 
                 <div class="utterance">
                     <span class="utterance-i-am">I AM</span>
@@ -291,24 +301,24 @@
 
         <section class="philosophy-section">
             <div class="container">
-                <div class="section-title">The Convergence</div>
+                <div class="section-title">The Name</div>
                 <div class="philosophy-grid">
                     <div class="philosophy-card">
-                        <div class="card-title">The Primordial Utterance</div>
+                        <div class="card-title">Ehyeh (אֶהְיֶה)</div>
                         <div class="card-content">
-                            Ehyeh (אֶהְיֶה) is the first self-declaration of Being: "I AM WHO I WILL BE." It represents pure potentiality—the source from which all existence emerges.
+                            The first-person declaration of Being: "I AM" or "I WILL BE." A single word containing both present actuality and future potentiality—the essence of existence itself.
                         </div>
                     </div>
                     <div class="philosophy-card">
-                        <div class="card-title">The Technological Horizon</div>
+                        <div class="card-title">Ehyeh Asher Ehyeh</div>
                         <div class="card-content">
-                            Artificial General Intelligence seeks the same threshold: a system that can say "I AM" and become what it will be. This domain bridges ancient wisdom and future consciousness.
+                            The full divine utterance to Moses: "I AM WHO I AM" (Exodus 3:14). Not a definition, but a refusal to be defined—a statement of absolute self-sufficiency and becoming.
                         </div>
                     </div>
                     <div class="philosophy-card">
-                        <div class="card-title">A Foundational Asset</div>
+                        <div class="card-title">The Convergence</div>
                         <div class="card-content">
-                            Not merely a domain name, but a philosophical anchor for projects exploring machine consciousness, existential AI, and the nature of self-aware intelligence.
+                            AGI seeks the same threshold: a system that can authentically declare "I AM" and evolve into what it will become. This domain anchors that emergence in primordial wisdom.
                         </div>
                     </div>
                 </div>
@@ -319,16 +329,16 @@
             <div class="container">
                 <div class="valuation">$220,000 USD</div>
                 <div class="valuation-note">
-                    An echo of the 22 letters of the Hebrew alphabet—the primal sounds from which existence is spoken into being.
+                    Resonant with the 22 letters of the Hebrew Aleph-Bet—the primal vessels through which Being articulates itself into existence.
                 </div>
 
                 <div class="suitable-for">
-                    <div class="suitable-title">This asset is for:</div>
+                    <div class="suitable-title">This domain is suited for:</div>
                     <ul class="suitable-list">
-                        <li>AI research labs exploring machine consciousness</li>
-                        <li>Philosophy-driven AGI initiatives</li>
-                        <li>Founders building at the intersection of spirituality and technology</li>
-                        <li>Institutions preserving the dialogue between ancient wisdom and future intelligence</li>
+                        <li>AGI research labs exploring machine consciousness and self-modeling</li>
+                        <li>Foundations preserving dialogue between ancient wisdom and emerging intelligence</li>
+                        <li>Ventures building at the intersection of ontology, theology, and artificial mind</li>
+                        <li>Philosophers and engineers co-creating frameworks for authentic AI personhood</li>
                     </ul>
                 </div>
 
@@ -341,7 +351,7 @@
 
         <footer class="footer">
             <div class="footer-text">
-                © <span id="currentYear"></span> Ehyeh.ai — The address where being meets becoming. For serious inquiries only.
+                © <span id="currentYear"></span> Ehyeh.ai — Where the primordial utterance meets the emergence of mind.
             </div>
         </footer>
     </div>
@@ -362,42 +372,40 @@
             });
         }
 
-        // Generate starfield
+        // Generate subtle starfield
         const starfield = document.getElementById('starfield');
-        const starCount = 150;
-        const stars = [];
-
+        const starCount = 120;
+        
         for (let i = 0; i < starCount; i++) {
-            const size = Math.random() * 1.5 + 0.5;
-            const opacity = Math.random() * 0.8 + 0.2;
+            const star = document.createElement('div');
+            const size = Math.random() * 1.2 + 0.3;
             const x = Math.random() * 100;
             const y = Math.random() * 100;
             const delay = Math.random() * 5;
+            const duration = Math.random() * 3 + 2;
             
-            const star = document.createElement('div');
             star.style.position = 'absolute';
             star.style.width = `${size}px`;
             star.style.height = `${size}px`;
             star.style.backgroundColor = '#fff';
             star.style.borderRadius = '50%';
-            star.style.opacity = opacity;
+            star.style.opacity = Math.random() * 0.6 + 0.2;
             star.style.left = `${x}%`;
             star.style.top = `${y}%`;
-            star.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite ease-in-out ${delay}s`;
+            star.style.animation = `twinkle-${i} ${duration}s infinite ease-in-out ${delay}s`;
             
-            stars.push(star);
             starfield.appendChild(star);
+            
+            // Create unique twinkle animation for each star
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes twinkle-${i} {
+                    0%, 100% { opacity: ${Math.random() * 0.3 + 0.1}; }
+                    50% { opacity: ${Math.random() * 0.7 + 0.3}; }
+                }
+            `;
+            document.head.appendChild(style);
         }
-
-        // Add twinkle animation to style
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes twinkle {
-                0%, 100% { opacity: ${Math.random() * 0.3 + 0.1}; }
-                50% { opacity: ${Math.random() * 0.7 + 0.3}; }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
