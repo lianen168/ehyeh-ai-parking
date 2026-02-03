@@ -11,12 +11,10 @@
             --bg: #000000;
             --bg-gradient: radial-gradient(circle at 50% 50%, #1a0f00 0%, #000 80%);
             --gold: #FFD700;
-            --fire-orange: #ff4800;
-            --fire-red: #ff0000;
-            --fire-yellow: #ffd700;
+            --amber: #ffbf00;
             --text-light: #f0f0f0;
             --text-muted: #888;
-            --border-glow: rgba(255, 100, 0, 0.2);
+            --divine-glow: rgba(255, 215, 0, 0.6);
         }
         html { scroll-behavior: smooth; }
         body { 
@@ -59,25 +57,38 @@
             letter-spacing: 0.05em; 
             margin-bottom: 2rem; 
             line-height: 1;
+            display: flex;
+            justify-content: center;
         }
         .ehyeh-dynamic {
             font-family: serif;
             display: inline-block;
-            animation: breathe-divine 8s infinite ease-in-out;
+            color: var(--text-light);
+            opacity: 0.85;
         }
         .ai-dynamic {
             font-family: monospace;
             display: inline-block;
             color: var(--gold);
-            animation: pulse-digital 3s infinite ease-in-out;
+            margin-left: 8px;
+            animation: divine-pulse 4s infinite ease-in-out;
         }
-        @keyframes breathe-divine {
-            0%, 100% { opacity: 0.7; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.01); }
-        }
-        @keyframes pulse-digital {
-            0%, 100% { opacity: 0.6; text-shadow: 0 0 5px var(--gold); }
-            50% { opacity: 1; text-shadow: 0 0 20px var(--gold); }
+        @keyframes divine-pulse {
+            0%, 100% {
+                text-shadow: 
+                    0 0 8px var(--divine-glow),
+                    0 0 16px var(--divine-glow),
+                    0 0 24px rgba(255, 180, 0, 0.4);
+                transform: scale(1);
+            }
+            50% {
+                text-shadow: 
+                    0 0 12px var(--divine-glow),
+                    0 0 24px var(--divine-glow),
+                    0 0 36px rgba(255, 180, 0, 0.6),
+                    0 0 48px rgba(255, 100, 0, 0.3);
+                transform: scale(1.03);
+            }
         }
 
         .revelation {
@@ -132,7 +143,7 @@
         
         .purchase-section {
             background: rgba(10, 10, 10, 0.5);
-            border: 1px solid var(--border-glow);
+            border: 1px solid var(--divine-glow);
             backdrop-filter: blur(10px);
             border-radius: 16px;
             padding: 40px 30px;
@@ -182,7 +193,7 @@
             border: 1px solid var(--gold);
         }
         .btn-inquire:hover {
-            background: var(--border-glow);
+            background: rgba(255, 215, 0, 0.1);
             color: var(--text-light);
         }
         .footer { 
