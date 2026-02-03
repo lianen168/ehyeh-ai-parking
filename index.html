@@ -79,15 +79,34 @@
         }
 
         .revelation {
-            font-family: monospace;
+            /* This container creates the large vertical empty space */
+            margin: 10rem auto;
             font-size: clamp(2rem, 8vw, 4rem);
-            margin: 4rem auto;
             letter-spacing: 0.1em;
             line-height: 1.5;
         }
 
-        /* --- THE FLAME FONT EFFECT --- */
-        .flame-text {
+        .revelation span {
+            display: block;
+            opacity: 0; /* Initially invisible */
+        }
+        
+        .iam {
+            font-family: 'Times New Roman', Times, serif; /* Ancient, declarative font */
+            animation: fadeIn 4s forwards;
+        }
+
+        .iwillbe {
+            font-family: Helvetica, Arial, sans-serif; /* Modern, potential font */
+            animation: fadeIn 4s 2.2s forwards; /* Delay of 2.2s */
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        /* The class that will be ADDED by JavaScript to ignite the flame */
+        .is-burning {
             color: #fff;
             animation: flame-flicker 3s infinite linear;
         }
@@ -98,14 +117,6 @@
             50% { text-shadow: 0 0 8px #fff, 0 0 18px #fff, 0 0 28px var(--gold), 0 0 38px var(--gold), 0 0 50px var(--fire-orange), 0 0 60px var(--fire-orange), 0 0 75px #ff0000; }
             75% { text-shadow: 0 0 12px #fff, 0 0 25px #fff, 0 0 35px var(--gold), 0 0 45px var(--gold), 0 0 58px var(--fire-orange), 0 0 68px var(--fire-orange), 0 0 82px #ff0000; }
             100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--gold), 0 0 40px var(--gold), 0 0 50px var(--fire-orange), 0 0 60px var(--fire-orange), 0 0 70px #ff0000; }
-        }
-
-        .revelation span { display: block; }
-        .revelation .iam { animation: fadeIn 4s forwards; }
-        .revelation .iwillbe { opacity: 0; animation: fadeIn 4s 2s forwards; }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
         }
         
         .purchase-section {
@@ -180,8 +191,8 @@
                 </h1>
 
                 <div class="revelation">
-                    <span class="iam flame-text">I AM</span>
-                    <span class="iwillbe flame-text">I WILL BE</span>
+                    <span class="iam">I AM</span>
+                    <span class="iwillbe">I WILL BE</span>
                 </div>
             </div>
         </header>
@@ -215,6 +226,22 @@
                 alert("Please email: " + email);
             });
         }
+        
+        // --- JavaScript for the Ignition Sequence ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const iamElement = document.querySelector('.iam');
+            const iwillbeElement = document.querySelector('.iwillbe');
+
+            // The 'animationend' event fires when a CSS animation has completed.
+            // We listen for it on the element that animates last.
+            iwillbeElement.addEventListener('animationend', () => {
+                // This code runs only AFTER "I WILL BE" has finished fading in.
+                
+                // Now, we ignite the flame effect on both elements.
+                iamElement.classList.add('is-burning');
+                iwillbeElement.classList.add('is-burning');
+            });
+        });
     </script>
 </body>
 </html>
