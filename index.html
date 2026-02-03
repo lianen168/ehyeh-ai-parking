@@ -218,26 +218,27 @@
     </script>
     <script>
     const sketch = (p) => {
-        const PARTICLE_COUNT = 2000;
+        const PARTICLE_COUNT = 2500;
         const MOUSE_REPEL_RADIUS = 150;
-        const MOUSE_REPEL_STRENGTH = 2.5;
+        const MOUSE_REPEL_STRENGTH = 3.0;
         const FIRE_PALETTE = [ [255, 0, 0], [255, 90, 0], [255, 150, 0], [255, 215, 0] ];
 
         let particles = [];
         let canvasSize = 300;
+        let center;
 
         class Particle {
-            constructor(x, y) {
-                this.reset(x, y);
+            constructor() {
+                this.reset();
             }
 
-            reset(x = p.random(canvasSize * 0.4, canvasSize * 0.6), y = canvasSize) {
-                this.pos = p.createVector(x, y);
-                this.vel = p.createVector(p.random(-0.3, 0.3), p.random(-1, -2));
+            reset() {
+                this.pos = center.copy();
+                this.vel = p5.Vector.random2D().mult(p.random(1, 3));
                 this.acc = p.createVector();
                 this.lifespan = 255;
                 this.color = p.random(FIRE_PALETTE);
-                this.noiseOffset = p.random(1000);
+                this.noiseOffset = p.createVector(p.random(1000), p.random(1000));
             }
 
             isDead() {
@@ -247,7 +248,7 @@
             applyForce(force) { this.acc.add(force); }
             
             update() {
-                this.lifespan -= 2.0;
+                this.lifespan -= 2.5;
                 this.vel.add(this.acc);
                 this.pos.add(this.vel);
                 this.acc.mult(0);
@@ -259,19 +260,26 @@
             
             show() {
                 let alpha = p.map(this.lifespan, 0, 255, 0, 255);
-                p.strokeWeight(p.map(this.lifespan, 0, 255, 0, 2.5));
+                p.strokeWeight(p.map(this.lifespan, 0, 255, 0, 3));
                 p.stroke(this.color[0], this.color[1], this.color[2], alpha);
                 p.point(this.pos.x, this.pos.y);
             }
 
             behaviors() {
-                // Main upward force
-                this.applyForce(p.createVector(0, -0.02));
+                // Gravitational pull towards the center
+                let toCenter = p5.Vector.sub(center, this.pos);
+                let dist = toCenter.mag();
+                // Stronger pull when further away, creating the "ball"
+                toCenter.setMag(p.map(dist, 0, canvasSize/2, 0, 0.1));
+                this.applyForce(toCenter);
                 
-                // Horizontal flicker based on noise
-                let flicker = p.map(p.noise(this.noiseOffset), 0, 1, -0.1, 0.1);
-                this.applyForce(p.createVector(flicker, 0));
-                this.noiseOffset += 0.02;
+                // Turbulence/flicker
+                let noiseForce = p.createVector(
+                    p.map(p.noise(this.noiseOffset.x + this.pos.y * 0.01), 0, 1, -0.2, 0.2),
+                    p.map(p.noise(this.noiseOffset.y + this.pos.x * 0.01), 0, 1, -0.2, 0.2)
+                );
+                this.applyForce(noiseForce);
+                this.noiseOffset.add(0.01, 0.01);
 
                 // Mouse repulsion
                 let canvasElem = document.getElementById('canvas-container');
@@ -292,8 +300,8 @@
         p.setup = () => {
             let canvas = p.createCanvas(canvasSize, canvasSize);
             canvas.parent('canvas-container');
+            center = p.createVector(canvasSize / 2, canvasSize / 2);
             
-            // Initialize all particles
             for (let i = 0; i < PARTICLE_COUNT; i++) {
                 particles.push(new Particle());
             }
