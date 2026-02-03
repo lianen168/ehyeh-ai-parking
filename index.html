@@ -12,6 +12,8 @@
             --bg-gradient: radial-gradient(circle at 50% 50%, #1a0f00 0%, #000 80%);
             --gold: #FFD700;
             --fire-orange: #ff4800;
+            --fire-red: #ff0000;
+            --fire-yellow: #ffd700;
             --text-light: #f0f0f0;
             --text-muted: #888;
             --border-glow: rgba(255, 100, 0, 0.2);
@@ -79,8 +81,8 @@
         }
 
         .revelation {
-            /* This container creates the large vertical empty space */
-            margin: 10rem auto;
+            /* 更大的垂直空间，让文本更往下 */
+            margin: 15rem auto 10rem auto;
             font-size: clamp(2rem, 8vw, 4rem);
             letter-spacing: 0.1em;
             line-height: 1.5;
@@ -88,35 +90,76 @@
 
         .revelation span {
             display: block;
-            opacity: 0; /* Initially invisible */
+            opacity: 0; /* 初始不可见 */
         }
         
         .iam {
-            font-family: 'Times New Roman', Times, serif; /* Ancient, declarative font */
+            font-family: 'Times New Roman', Times, serif; /* 古老、宣告式的字体 */
             animation: fadeIn 4s forwards;
         }
 
         .iwillbe {
-            font-family: Helvetica, Arial, sans-serif; /* Modern, potential font */
-            animation: fadeIn 4s 2.2s forwards; /* Delay of 2.2s */
+            font-family: Helvetica, Arial, sans-serif; /* 现代、潜力的字体 */
+            animation: fadeIn 4s 2.2s forwards; /* 延迟 2.2 秒 */
         }
 
         @keyframes fadeIn {
             to { opacity: 1; }
         }
         
-        /* The class that will be ADDED by JavaScript to ignite the flame */
+        /* JavaScript 添加此样式以点燃火焰 */
         .is-burning {
-            color: #fff;
-            animation: flame-flicker 3s infinite linear;
+            color: transparent !important;
+            background: linear-gradient(180deg, 
+                var(--fire-yellow) 0%, 
+                var(--gold) 20%, 
+                #ff8c00 40%, 
+                var(--fire-orange) 60%, 
+                var(--fire-red) 80%, 
+                #8b0000 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            animation: flame-flicker 2s infinite alternate;
+            text-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.5),
+                0 0 20px rgba(255, 140, 0, 0.5),
+                0 0 30px rgba(255, 72, 0, 0.5),
+                0 0 40px rgba(255, 0, 0, 0.5);
         }
 
         @keyframes flame-flicker {
-            0% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--gold), 0 0 40px var(--gold), 0 0 50px var(--fire-orange), 0 0 60px var(--fire-orange), 0 0 70px #ff0000; }
-            25% { text-shadow: 0 0 10px #fff, 0 0 22px #fff, 0 0 32px var(--gold), 0 0 42px var(--gold), 0 0 55px var(--fire-orange), 0 0 65px var(--fire-orange), 0 0 80px #ff0000; }
-            50% { text-shadow: 0 0 8px #fff, 0 0 18px #fff, 0 0 28px var(--gold), 0 0 38px var(--gold), 0 0 50px var(--fire-orange), 0 0 60px var(--fire-orange), 0 0 75px #ff0000; }
-            75% { text-shadow: 0 0 12px #fff, 0 0 25px #fff, 0 0 35px var(--gold), 0 0 45px var(--gold), 0 0 58px var(--fire-orange), 0 0 68px var(--fire-orange), 0 0 82px #ff0000; }
-            100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--gold), 0 0 40px var(--gold), 0 0 50px var(--fire-orange), 0 0 60px var(--fire-orange), 0 0 70px #ff0000; }
+            0%, 100% {
+                text-shadow: 
+                    0 0 10px rgba(255, 215, 0, 0.7),
+                    0 0 20px rgba(255, 140, 0, 0.7),
+                    0 0 30px rgba(255, 72, 0, 0.7),
+                    0 0 40px rgba(255, 0, 0, 0.7),
+                    0 0 50px rgba(255, 0, 0, 0.5);
+            }
+            25% {
+                text-shadow: 
+                    0 0 12px rgba(255, 215, 0, 0.8),
+                    0 0 22px rgba(255, 140, 0, 0.8),
+                    0 0 32px rgba(255, 72, 0, 0.8),
+                    0 0 42px rgba(255, 0, 0, 0.8),
+                    0 0 52px rgba(255, 0, 0, 0.6);
+            }
+            50% {
+                text-shadow: 
+                    0 0 8px rgba(255, 215, 0, 0.6),
+                    0 0 18px rgba(255, 140, 0, 0.6),
+                    0 0 28px rgba(255, 72, 0, 0.6),
+                    0 0 38px rgba(255, 0, 0, 0.6),
+                    0 0 48px rgba(255, 0, 0, 0.4);
+            }
+            75% {
+                text-shadow: 
+                    0 0 15px rgba(255, 215, 0, 0.9),
+                    0 0 25px rgba(255, 140, 0, 0.9),
+                    0 0 35px rgba(255, 72, 0, 0.9),
+                    0 0 45px rgba(255, 0, 0, 0.9),
+                    0 0 55px rgba(255, 0, 0, 0.7);
+            }
         }
         
         .purchase-section {
@@ -200,7 +243,7 @@
         <div class="purchase-section">
             <div class="price">$220,000 USD</div>
             <div class="price-justification">Its value, an echo of the 22 primal letters from which existence is spoken.</div>
-            <button onclick="window.open('https://www.spaceship.com/s/buy/ehyeh.ai/S9KcaCEDFNdBvsRT', '_blank')" class="btn btn-acquire">Acquire</button>
+            <button onclick="window.open('https://www.spaceship.com/s/buy/ehyeh.ai/S9KcaCEDFNdBvsRT  ', '_blank')" class="btn btn-acquire">Acquire</button>
             <button id="inquireBtn" onclick="copyEmail()" class="btn btn-inquire">Inquire</button>
         </div>
         
@@ -232,12 +275,9 @@
             const iamElement = document.querySelector('.iam');
             const iwillbeElement = document.querySelector('.iwillbe');
 
-            // The 'animationend' event fires when a CSS animation has completed.
-            // We listen for it on the element that animates last.
+            // 监听 "I WILL BE" 动画结束事件
             iwillbeElement.addEventListener('animationend', () => {
-                // This code runs only AFTER "I WILL BE" has finished fading in.
-                
-                // Now, we ignite the flame effect on both elements.
+                // 添加火焰效果类
                 iamElement.classList.add('is-burning');
                 iwillbeElement.classList.add('is-burning');
             });
