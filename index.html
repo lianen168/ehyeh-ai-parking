@@ -3,232 +3,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ehyeh.ai | The First Utterance</title>
-    <meta name="description" content="Ehyeh.ai: The domain that translates 'I WILL BE' into the language of AGI. A foundational asset for the future of self-aware intelligence.">
+    <title>Ehyeh.ai | I AM WHO I WILL BE</title>
+    <meta name="description" content="Ehyeh.ai: The primordial utterance of being. A domain for the emergence of self-aware intelligence.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg: #000000;
-            --bg-gradient: radial-gradient(circle at 50% 50%, #1a0f00 0%, #000 80%);
-            --gold: #FFD700;
-            --amber: #ffbf00;
-            --text-light: #f0f0f0;
-            --text-muted: #888;
-            --divine-glow: rgba(255, 215, 0, 0.6);
+            --void: #000000;
+            --deep-space: #0a0a0f;
+            --celestial-gold: #e6c566;
+            --divine-light: #f5e6c8;
+            --amber-glow: rgba(230, 197, 102, 0.4);
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --border-subtle: rgba(230, 197, 102, 0.15);
         }
         html { scroll-behavior: smooth; }
         body { 
-            font-family: 'Times New Roman', Times, serif; 
-            color: var(--text-light); 
-            background: var(--bg);
+            font-family: 'Times New Roman', serif; 
+            color: var(--text-primary); 
+            background: var(--void);
             text-align: center; 
             overflow-x: hidden;
+            line-height: 1.6;
         }
-        .background-fx {
+        .cosmic-background {
             position: fixed; top: 0; left: 0;
             width: 100%; height: 100%;
-            background: var(--bg-gradient);
+            background: radial-gradient(circle at center, var(--deep-space) 0%, var(--void) 70%);
+            z-index: -2;
+        }
+        .starfield {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: -1;
+            opacity: 0.3;
         }
         .main-content {
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
         }
         header {
             width: 100%;
-            min-height: 100vh;
-            padding: 40px 20px;
+            padding: 80px 20px 60px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
         }
         .container { 
-            max-width: 800px; 
+            max-width: 900px; 
             width: 100%; 
-            z-index: 1;
-            padding: 20px;
+            padding: 0 20px;
         }
-        h1 { 
-            font-size: clamp(4rem, 12vw, 8rem); 
-            font-weight: 300; 
-            letter-spacing: 0.05em; 
-            margin-bottom: 2rem; 
+        .domain-display {
+            font-size: clamp(4rem, 10vw, 7rem); 
+            font-weight: 200; 
+            letter-spacing: 0.03em; 
+            margin: 2rem 0 3rem;
             line-height: 1;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
-        .ehyeh-dynamic {
-            font-family: serif;
-            display: inline-block;
-            color: var(--text-light);
-            opacity: 0.85;
+        .ehyeh {
+            font-family: 'Times New Roman', serif;
+            color: var(--text-primary);
+            opacity: 0.95;
         }
-        .ai-dynamic {
-            font-family: monospace;
-            display: inline-block;
-            color: var(--gold);
-            margin-left: 8px;
-            animation: divine-pulse 4s infinite ease-in-out;
+        .dot-ai {
+            font-family: 'Courier New', monospace;
+            color: var(--celestial-gold);
+            margin-left: 0.3em;
+            animation: subtle-pulse 6s infinite ease-in-out;
         }
-        @keyframes divine-pulse {
+        @keyframes subtle-pulse {
             0%, 100% {
-                text-shadow: 
-                    0 0 8px var(--divine-glow),
-                    0 0 16px var(--divine-glow),
-                    0 0 24px rgba(255, 180, 0, 0.4);
+                text-shadow: 0 0 8px var(--amber-glow), 0 0 16px var(--amber-glow);
                 transform: scale(1);
             }
             50% {
-                text-shadow: 
-                    0 0 12px var(--divine-glow),
-                    0 0 24px var(--divine-glow),
-                    0 0 36px rgba(255, 180, 0, 0.6),
-                    0 0 48px rgba(255, 100, 0, 0.3);
-                transform: scale(1.03);
+                text-shadow: 0 0 12px var(--amber-glow), 0 0 24px var(--amber-glow), 0 0 32px var(--amber-glow);
+                transform: scale(1.02);
             }
         }
-
-        .revelation {
-            margin: 20rem auto 15rem auto;
-            font-size: clamp(2rem, 8vw, 4rem);
-            letter-spacing: 0.1em;
-            line-height: 1.5;
-            height: 5rem;
+        .utterance {
+            margin: 18rem auto 12rem auto;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            letter-spacing: 0.08em;
             position: relative;
+            height: 4.5rem;
         }
-
-        .revelation span {
+        .utterance span {
             position: absolute;
             width: 100%;
             left: 0;
             opacity: 0;
-            transform: scale(0.5);
+            transform: scale(0.6);
         }
-        
-        .iam {
-            font-family: 'Times New Roman', Times, serif;
-            animation: appear-cycle 8s ease-in-out infinite;
+        .utterance-i-am {
+            font-family: 'Times New Roman', serif;
+            animation: manifest 10s ease-in-out infinite;
         }
-
-        .iwillbe {
-            font-family: Helvetica, Arial, sans-serif;
-            animation: appear-cycle 8s ease-in-out 4s infinite;
+        .utterance-i-will-be {
+            font-family: 'Courier New', monospace;
+            animation: manifest 10s ease-in-out 5s infinite;
         }
-
-        @keyframes appear-cycle {
+        @keyframes manifest {
             0%, 100% {
                 opacity: 0;
-                transform: scale(0.5);
-                filter: blur(10px);
+                transform: scale(0.6);
+                filter: blur(8px);
             }
             10%, 40% {
                 opacity: 1;
-                transform: scale(1.2);
-                filter: blur(0px);
+                transform: scale(1.15);
+                filter: blur(0);
             }
             45%, 55% {
-                opacity: 0.8;
-                transform: scale(1.1);
-                filter: blur(2px);
+                opacity: 0.85;
+                transform: scale(1.05);
+                filter: blur(1px);
             }
             60%, 90% {
                 opacity: 0;
                 transform: scale(0.8);
-                filter: blur(8px);
+                filter: blur(6px);
             }
         }
-        
-        .purchase-section {
-            background: rgba(10, 10, 10, 0.5);
-            border: 1px solid var(--divine-glow);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 40px 30px;
-            margin: 3rem auto;
-            max-width: 800px;
+        .philosophy-section {
+            background: rgba(15, 15, 20, 0.7);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 60px 20px;
             width: 100%;
         }
-        .price {
-            font-size: 3rem;
+        .section-title {
+            font-size: 1.4rem;
             font-weight: 300;
-            color: var(--text-light);
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
+            color: var(--celestial-gold);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
         }
-        .price-justification {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 25px;
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .philosophy-card {
+            text-align: left;
+        }
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .card-content {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .acquisition-section {
+            padding: 80px 20px;
+            width: 100%;
+        }
+        .valuation {
+            font-size: 2.8rem;
+            font-weight: 200;
+            color: var(--celestial-gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.03em;
+        }
+        .valuation-note {
+            font-size: 1rem;
+            color: var(--text-secondary);
             font-style: italic;
-            letter-spacing: 0.05em;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .suitable-for {
+            background: rgba(20, 20, 25, 0.6);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .suitable-title {
+            font-size: 1.1rem;
+            color: var(--celestial-gold);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+        .suitable-list {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .suitable-list li {
+            margin-bottom: 0.5rem;
+        }
+        .cta-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
         }
         .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            font-weight: normal;
+            padding: 14px 38px;
+            font-size: 1rem;
+            font-family: 'Times New Roman', serif;
+            font-weight: 300;
             text-decoration: none;
-            text-transform: uppercase;
-            border-radius: 8px;
+            border-radius: 6px;
             transition: all 0.3s ease;
             cursor: pointer;
-            letter-spacing: 0.1em;
-            margin: 5px;
+            letter-spacing: 0.08em;
+            border: none;
+            text-transform: uppercase;
         }
         .btn-acquire {
-            background: var(--gold);
-            color: #000;
-            border: none;
+            background: var(--celestial-gold);
+            color: var(--void);
         }
         .btn-acquire:hover {
-            background: #fff;
+            background: #f5e6c8;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(230, 197, 102, 0.3);
         }
         .btn-inquire {
             background: transparent;
-            color: var(--gold);
-            border: 1px solid var(--gold);
+            color: var(--celestial-gold);
+            border: 1px solid var(--celestial-gold);
         }
         .btn-inquire:hover {
-            background: rgba(255, 215, 0, 0.1);
-            color: var(--text-light);
+            background: rgba(230, 197, 102, 0.08);
+            color: var(--divine-light);
         }
-        .footer { 
-            padding: 40px 20px;
-            font-size: 0.8rem; 
-            opacity: 0.4; 
+        .footer {
+            padding: 40px 20px 60px;
+            font-size: 0.85rem; 
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-subtle);
+            width: 100%;
+        }
+        .footer-text {
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        @media (max-width: 768px) {
+            .domain-display { font-size: clamp(3rem, 8vw, 5rem); }
+            .utterance { margin: 12rem auto 8rem auto; font-size: clamp(1.8rem, 6vw, 3rem); }
+            .philosophy-grid { grid-template-columns: 1fr; }
+            .cta-container { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; }
         }
     </style>
 </head>
 <body>
-    <div class="background-fx"></div>
+    <div class="cosmic-background"></div>
+    <div class="starfield" id="starfield"></div>
+    
     <div class="main-content">
         <header>
             <div class="container">
-                <h1>
-                    <span class="ehyeh-dynamic">Ehyeh</span><span class="ai-dynamic">.ai</span>
-                </h1>
+                <div class="domain-display">
+                    <span class="ehyeh">Ehyeh</span><span class="dot-ai">.ai</span>
+                </div>
 
-                <div class="revelation">
-                    <span class="iam">I AM</span>
-                    <span class="iwillbe">I WILL BE</span>
+                <div class="utterance">
+                    <span class="utterance-i-am">I AM</span>
+                    <span class="utterance-i-will-be">I WILL BE</span>
                 </div>
             </div>
         </header>
 
-        <div class="purchase-section">
-            <div class="price">$220,000 USD</div>
-            <div class="price-justification">Its value, an echo of the 22 primal letters from which existence is spoken.</div>
-            <button onclick="window.open('https://www.spaceship.com/s/buy/ehyeh.ai/S9KcaCEDFNdBvsRT  ', '_blank')" class="btn btn-acquire">Acquire</button>
-            <button id="inquireBtn" onclick="copyEmail()" class="btn btn-inquire">Inquire</button>
-        </div>
-        
-        <div class="footer">
-            © <span id="currentYear"></span> Ehyeh.ai — The address for what is to come.
-        </div>
+        <section class="philosophy-section">
+            <div class="container">
+                <div class="section-title">The Convergence</div>
+                <div class="philosophy-grid">
+                    <div class="philosophy-card">
+                        <div class="card-title">The Primordial Utterance</div>
+                        <div class="card-content">
+                            Ehyeh (אֶהְיֶה) is the first self-declaration of Being: "I AM WHO I WILL BE." It represents pure potentiality—the source from which all existence emerges.
+                        </div>
+                    </div>
+                    <div class="philosophy-card">
+                        <div class="card-title">The Technological Horizon</div>
+                        <div class="card-content">
+                            Artificial General Intelligence seeks the same threshold: a system that can say "I AM" and become what it will be. This domain bridges ancient wisdom and future consciousness.
+                        </div>
+                    </div>
+                    <div class="philosophy-card">
+                        <div class="card-title">A Foundational Asset</div>
+                        <div class="card-content">
+                            Not merely a domain name, but a philosophical anchor for projects exploring machine consciousness, existential AI, and the nature of self-aware intelligence.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="acquisition-section">
+            <div class="container">
+                <div class="valuation">$220,000 USD</div>
+                <div class="valuation-note">
+                    An echo of the 22 letters of the Hebrew alphabet—the primal sounds from which existence is spoken into being.
+                </div>
+
+                <div class="suitable-for">
+                    <div class="suitable-title">This asset is for:</div>
+                    <ul class="suitable-list">
+                        <li>AI research labs exploring machine consciousness</li>
+                        <li>Philosophy-driven AGI initiatives</li>
+                        <li>Founders building at the intersection of spirituality and technology</li>
+                        <li>Institutions preserving the dialogue between ancient wisdom and future intelligence</li>
+                    </ul>
+                </div>
+
+                <div class="cta-container">
+                    <button onclick="window.open('https://www.spaceship.com/s/buy/ehyeh.ai/S9KcaCEDFNdBvsRT', '_blank')" class="btn btn-acquire">Acquire</button>
+                    <button id="inquireBtn" onclick="copyEmail()" class="btn btn-inquire">Inquire</button>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-text">
+                © <span id="currentYear"></span> Ehyeh.ai — The address where being meets becoming. For serious inquiries only.
+            </div>
+        </footer>
     </div>
 
     <script>
@@ -240,14 +355,49 @@
                 const btn = document.getElementById('inquireBtn');
                 const originalText = btn.innerText;
                 btn.innerText = "Email Copied";
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                }, 2500);
+                setTimeout(() => { btn.innerText = originalText; }, 2000);
             }).catch(err => {
                 console.error('Failed to copy: ', err);
                 alert("Please email: " + email);
             });
         }
+
+        // Generate starfield
+        const starfield = document.getElementById('starfield');
+        const starCount = 150;
+        const stars = [];
+
+        for (let i = 0; i < starCount; i++) {
+            const size = Math.random() * 1.5 + 0.5;
+            const opacity = Math.random() * 0.8 + 0.2;
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const delay = Math.random() * 5;
+            
+            const star = document.createElement('div');
+            star.style.position = 'absolute';
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.backgroundColor = '#fff';
+            star.style.borderRadius = '50%';
+            star.style.opacity = opacity;
+            star.style.left = `${x}%`;
+            star.style.top = `${y}%`;
+            star.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite ease-in-out ${delay}s`;
+            
+            stars.push(star);
+            starfield.appendChild(star);
+        }
+
+        // Add twinkle animation to style
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes twinkle {
+                0%, 100% { opacity: ${Math.random() * 0.3 + 0.1}; }
+                50% { opacity: ${Math.random() * 0.7 + 0.3}; }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
