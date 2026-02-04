@@ -28,6 +28,7 @@
             text-align: center; 
             overflow-x: hidden;
             line-height: 1.6;
+            min-height: 100vh;
         }
         .cosmic-background {
             position: fixed; top: 0; left: 0;
@@ -67,15 +68,16 @@
             align-items: center;
         }
         .container { 
-            max-width: 900px; 
+            max-width: 1200px; 
             width: 100%; 
-            padding: 0 20px;
+            padding: 0 40px;
+            margin: 0 auto;
         }
         .domain-display {
-            font-size: clamp(4rem, 10vw, 7rem); 
+            font-size: clamp(5rem, 12vw, 9rem); 
             font-weight: 300; 
             letter-spacing: 0.03em; 
-            margin: 2rem 0 2.5rem;
+            margin: 3rem 0 4rem;
             line-height: 1;
             display: flex;
             justify-content: center;
@@ -103,11 +105,11 @@
             }
         }
         .utterance {
-            margin: 16rem auto 10rem auto;
-            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin: 20rem auto 15rem auto;
+            font-size: clamp(3rem, 8vw, 5rem);
             letter-spacing: 0.08em;
             position: relative;
-            height: 4.5rem;
+            height: 6rem;
         }
         .utterance span {
             position: absolute;
@@ -142,101 +144,114 @@
             background: rgba(15, 15, 20, 0.7);
             border-top: 1px solid var(--border-subtle);
             border-bottom: 1px solid var(--border-subtle);
-            padding: 60px 20px;
+            padding: 80px 40px;
             width: 100%;
         }
         .section-title {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 300;
             letter-spacing: 0.1em;
             color: var(--celestial-gold);
-            margin-bottom: 2.5rem;
+            margin-bottom: 3.5rem;
             text-transform: uppercase;
         }
         .philosophy-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
-            max-width: 900px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            max-width: 1200px;
             margin: 0 auto;
         }
         .philosophy-card {
             text-align: left;
+            padding: 0 20px;
         }
         .card-title {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 400;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             color: var(--text-primary);
+            border-left: 2px solid var(--celestial-gold);
+            padding-left: 15px;
         }
         .card-content {
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.8;
         }
         .acquisition-section {
-            padding: 80px 20px;
+            padding: 100px 40px;
             width: 100%;
         }
         .valuation {
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             font-weight: 200;
             color: var(--celestial-gold);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             letter-spacing: 0.03em;
         }
         .valuation-note {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: var(--text-secondary);
             font-style: italic;
-            margin-bottom: 2.5rem;
-            max-width: 600px;
+            margin-bottom: 3.5rem;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
         .suitable-for {
             background: rgba(20, 20, 25, 0.6);
             border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 2.5rem;
-            max-width: 700px;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 4rem;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
         }
         .suitable-title {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             color: var(--celestial-gold);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-weight: 400;
         }
         .suitable-list {
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            line-height: 1.8;
+            line-height: 1.9;
+            text-align: left;
         }
         .suitable-list li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .suitable-list li:before {
+            content: "•";
+            color: var(--celestial-gold);
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
         }
         .cta-container {
             display: flex;
             justify-content: center;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
+            gap: 2rem;
+            margin-top: 2.5rem;
         }
         .btn {
-            padding: 14px 38px;
-            font-size: 1rem;
+            padding: 18px 50px;
+            font-size: 1.1rem;
             font-family: 'EB Garamond', 'Times New Roman', serif;
             font-weight: 300;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
             transition: all 0.3s ease;
             cursor: pointer;
             letter-spacing: 0.08em;
             border: none;
             text-transform: uppercase;
+            min-width: 200px;
         }
         .btn-acquire {
             background: var(--celestial-gold);
@@ -244,8 +259,8 @@
         }
         .btn-acquire:hover {
             background: #f5e6c8;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(230, 197, 102, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(230, 197, 102, 0.4);
         }
         .btn-inquire {
             background: transparent;
@@ -253,27 +268,120 @@
             border: 1px solid var(--celestial-gold);
         }
         .btn-inquire:hover {
-            background: rgba(230, 197, 102, 0.08);
+            background: rgba(230, 197, 102, 0.1);
             color: var(--divine-light);
         }
         .footer {
-            padding: 40px 20px 60px;
-            font-size: 0.85rem; 
+            padding: 60px 40px;
+            font-size: 0.95rem; 
             color: var(--text-secondary);
             border-top: 1px solid var(--border-subtle);
             width: 100%;
         }
         .footer-text {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
-            line-height: 1.7;
+            line-height: 1.8;
+        }
+        @media (max-width: 1200px) {
+            .container { 
+                max-width: 900px; 
+                padding: 0 30px;
+            }
+            .philosophy-grid {
+                gap: 3rem;
+            }
+        }
+        @media (max-width: 992px) {
+            .philosophy-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .container { 
+                padding: 0 25px;
+            }
         }
         @media (max-width: 768px) {
-            .domain-display { font-size: clamp(3rem, 8vw, 5rem); }
-            .utterance { margin: 12rem auto 8rem auto; font-size: clamp(1.8rem, 6vw, 3rem); }
-            .philosophy-grid { grid-template-columns: 1fr; }
-            .cta-container { flex-direction: column; align-items: center; }
-            .btn { width: 100%; max-width: 300px; }
+            .container { 
+                padding: 0 20px;
+            }
+            .domain-display { 
+                font-size: clamp(3rem, 10vw, 6rem); 
+                margin: 2rem 0 3rem;
+            }
+            .utterance { 
+                margin: 12rem auto 8rem auto; 
+                font-size: clamp(2rem, 6vw, 3.5rem); 
+                height: 4.5rem;
+            }
+            .philosophy-section { 
+                padding: 60px 20px;
+            }
+            .philosophy-grid { 
+                grid-template-columns: 1fr; 
+                gap: 2.5rem;
+            }
+            .acquisition-section { 
+                padding: 60px 20px;
+            }
+            .valuation { 
+                font-size: 2.8rem;
+            }
+            .suitable-for { 
+                padding: 25px; 
+                margin-bottom: 2.5rem;
+            }
+            .cta-container { 
+                flex-direction: column; 
+                align-items: center; 
+                gap: 1.2rem;
+            }
+            .btn { 
+                width: 100%; 
+                max-width: 300px; 
+                padding: 14px 30px;
+            }
+            .section-title { 
+                font-size: 1.4rem; 
+                margin-bottom: 2.5rem;
+            }
+            .card-title { 
+                font-size: 1.3rem; 
+                margin-bottom: 1rem;
+            }
+            .card-content { 
+                font-size: 0.95rem;
+            }
+            .suitable-title { 
+                font-size: 1.1rem;
+            }
+            .suitable-list { 
+                font-size: 0.95rem;
+            }
+            .valuation-note { 
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .container { 
+                padding: 0 15px;
+            }
+            .domain-display { 
+                font-size: clamp(2.5rem, 8vw, 4rem);
+            }
+            .utterance { 
+                margin: 8rem auto 6rem auto; 
+                font-size: clamp(1.8rem, 5vw, 2.5rem);
+            }
+            .philosophy-section, 
+            .acquisition-section { 
+                padding: 40px 15px;
+            }
+            .valuation { 
+                font-size: 2.2rem;
+            }
+            .suitable-for { 
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -371,12 +479,12 @@
 
         // Generate subtle starfield
         const starfield = document.getElementById('starfield');
-        const starCount = 100;
+        const starCount = 150;
         
         for (let i = 0; i < starCount; i++) {
             const star = document.createElement('div');
             star.className = 'star';
-            const size = Math.random() * 1.5 + 0.5;
+            const size = Math.random() * 2 + 0.5;
             star.style.width = `${size}px`;
             star.style.height = `${size}px`;
             star.style.setProperty('--delay', `${Math.random() * 5}s`);
