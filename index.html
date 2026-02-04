@@ -9,60 +9,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --void: #000000;
-            --deep-space: #0a0a0f;
-            --celestial-gold: #e6c566;
-            --divine-light: #f5e6c8;
-            --amber-glow: rgba(230, 197, 102, 0.4);
-            --text-primary: #e8e8e8;
-            --text-secondary: #a0a0a0;
-            --border-subtle: rgba(230, 197, 102, 0.15);
+            --bg-color: #f4f4f7;
+            --text-primary: #1a1a2e;
+            --text-secondary: #5a5a6e;
+            /* --- NEW: Gold + Blue Palette --- */
+            --accent-gold: #c7a444; /* A refined, less saturated gold */
+            --accent-celestial: #5c95e6;
+            --gold-glow: rgba(199, 164, 68, 0.25);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --border-color: rgba(26, 26, 46, 0.1);
         }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { 
             font-family: 'EB Garamond', 'Times New Roman', serif; 
             color: var(--text-primary); 
-            background: var(--void);
+            background: var(--bg-color);
             text-align: center; 
             overflow-x: hidden;
             line-height: 1.6;
             min-height: 100vh;
         }
-        .cosmic-background {
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at center, var(--deep-space) 0%, var(--void) 70%);
-            z-index: -2;
-        }
-        .starfield {
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -1;
-            opacity: 0.3;
-        }
-        .star {
-            position: absolute;
-            background-color: #fff;
-            border-radius: 50%;
-            animation: twinkle var(--duration) infinite ease-in-out;
-            animation-delay: var(--delay);
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.8; }
-        }
         .main-content {
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-        header {
-            width: 100%;
-            padding: 80px 20px 60px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -73,50 +43,47 @@
             padding: 0 40px;
             margin: 0 auto;
         }
-        .domain-display {
-            font-size: clamp(5rem, 12vw, 9rem); 
-            font-weight: 300; 
-            letter-spacing: 0.03em; 
-            margin: 3rem 0 4rem;
-            line-height: 1;
+        header {
+            width: 100%;
+            min-height: 100vh;
+            padding: 40px 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: center; /* Vertically centers content */
             align-items: center;
         }
-        .ehyeh {
-            font-family: 'EB Garamond', 'Times New Roman', serif;
+        .domain-display {
+            font-size: clamp(5rem, 12vw, 9rem); 
+            font-weight: 400; 
+            letter-spacing: 0.03em; 
+            line-height: 1;
             color: var(--text-primary);
-            opacity: 0.95;
         }
         .dot-ai {
             font-family: 'Courier New', monospace;
-            color: var(--celestial-gold);
-            margin-left: 0.3em;
+            color: var(--accent-gold);
+            margin-left: 0.2em;
             animation: subtle-pulse 6s infinite ease-in-out;
         }
         @keyframes subtle-pulse {
-            0%, 100% {
-                text-shadow: 0 0 8px var(--amber-glow), 0 0 16px var(--amber-glow);
-                transform: scale(1);
-            }
-            50% {
-                text-shadow: 0 0 12px var(--amber-glow), 0 0 24px var(--amber-glow), 0 0 32px var(--amber-glow);
-                transform: scale(1.02);
-            }
+            0%, 100% { text-shadow: 0 0 8px var(--gold-glow); transform: scale(1); }
+            50% { text-shadow: 0 0 16px var(--gold-glow), 0 0 24px var(--gold-glow); transform: scale(1.02); }
         }
         .utterance {
-            margin: 20rem auto 15rem auto;
+            margin-top: 4rem;
             font-size: clamp(3rem, 8vw, 5rem);
             letter-spacing: 0.08em;
             position: relative;
             height: 6rem;
+            color: var(--text-secondary);
         }
         .utterance span {
             position: absolute;
             width: 100%;
             left: 0;
             opacity: 0;
-            transform: scale(0.6);
+            transform: scale(0.7);
+            filter: blur(8px);
         }
         .utterance-i-am {
             font-family: 'EB Garamond', 'Times New Roman', serif;
@@ -127,31 +94,25 @@
             animation: manifest-will-be 10s ease-in-out infinite;
         }
         @keyframes manifest-am {
-            0%   { opacity: 0; transform: scale(0.7); filter: blur(8px); }
-            10%  { opacity: 1; transform: scale(1);   filter: blur(0); }
-            40%  { opacity: 1; transform: scale(1);   filter: blur(0); }
-            50%  { opacity: 0; transform: scale(0.7); filter: blur(8px); }
-            100% { opacity: 0; transform: scale(0.7); filter: blur(8px); }
+            0%, 50%, 100% { opacity: 0; transform: scale(0.7); filter: blur(8px); }
+            10%, 40% { opacity: 0.6; transform: scale(1); filter: blur(0); }
         }
         @keyframes manifest-will-be {
-            0%   { opacity: 0; transform: scale(0.7); filter: blur(8px); }
-            50%  { opacity: 0; transform: scale(0.7); filter: blur(8px); }
-            60%  { opacity: 1; transform: scale(1);   filter: blur(0); }
-            90%  { opacity: 1; transform: scale(1);   filter: blur(0); }
-            100% { opacity: 0; transform: scale(0.7); filter: blur(8px); }
+            0%, 50%, 100% { opacity: 0; transform: scale(0.7); filter: blur(8px); }
+            60%, 90% { opacity: 0.6; transform: scale(1); filter: blur(0); }
         }
         .philosophy-section {
-            background: rgba(15, 15, 20, 0.7);
-            border-top: 1px solid var(--border-subtle);
-            border-bottom: 1px solid var(--border-subtle);
+            background: #fff;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
             padding: 80px 40px;
             width: 100%;
         }
         .section-title {
             font-size: 1.6rem;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 0.1em;
-            color: var(--celestial-gold);
+            color: var(--accent-gold);
             margin-bottom: 3.5rem;
             text-transform: uppercase;
         }
@@ -164,15 +125,14 @@
         }
         .philosophy-card {
             text-align: left;
-            padding: 0 20px;
+            padding: 20px;
+            border-left: 2px solid var(--accent-gold);
         }
         .card-title {
             font-size: 1.5rem;
-            font-weight: 400;
+            font-weight: 500;
             margin-bottom: 1.2rem;
             color: var(--text-primary);
-            border-left: 2px solid var(--celestial-gold);
-            padding-left: 15px;
         }
         .card-content {
             font-size: 1.1rem;
@@ -185,8 +145,8 @@
         }
         .valuation {
             font-size: 3.5rem;
-            font-weight: 200;
-            color: var(--celestial-gold);
+            font-weight: 300;
+            color: var(--accent-gold);
             margin-bottom: 2rem;
             letter-spacing: 0.03em;
         }
@@ -200,8 +160,8 @@
             margin-right: auto;
         }
         .suitable-for {
-            background: rgba(20, 20, 25, 0.6);
-            border: 1px solid var(--border-subtle);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 40px;
             margin-bottom: 4rem;
@@ -211,15 +171,16 @@
         }
         .suitable-title {
             font-size: 1.3rem;
-            color: var(--celestial-gold);
+            color: var(--accent-gold);
             margin-bottom: 1.5rem;
-            font-weight: 400;
+            font-weight: 500;
         }
         .suitable-list {
             font-size: 1.1rem;
             color: var(--text-secondary);
             line-height: 1.9;
             text-align: left;
+            list-style: none;
         }
         .suitable-list li {
             margin-bottom: 1rem;
@@ -228,7 +189,7 @@
         }
         .suitable-list li:before {
             content: "•";
-            color: var(--celestial-gold);
+            color: var(--accent-gold);
             position: absolute;
             left: 0;
             font-size: 1.5rem;
@@ -243,7 +204,7 @@
             padding: 18px 50px;
             font-size: 1.1rem;
             font-family: 'EB Garamond', 'Times New Roman', serif;
-            font-weight: 300;
+            font-weight: 400;
             text-decoration: none;
             border-radius: 8px;
             transition: all 0.3s ease;
@@ -254,148 +215,52 @@
             min-width: 200px;
         }
         .btn-acquire {
-            background: var(--celestial-gold);
-            color: var(--void);
+            background: var(--accent-gold);
+            color: #fff;
         }
         .btn-acquire:hover {
-            background: #f5e6c8;
+            background: #dcb65a;
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(230, 197, 102, 0.4);
+            box-shadow: 0 12px 30px var(--gold-glow);
         }
         .btn-inquire {
             background: transparent;
-            color: var(--celestial-gold);
-            border: 1px solid var(--celestial-gold);
+            color: var(--accent-celestial);
+            border: 1px solid var(--accent-celestial);
         }
         .btn-inquire:hover {
-            background: rgba(230, 197, 102, 0.1);
-            color: var(--divine-light);
+            background: rgba(92, 149, 230, 0.1);
+            color: #4a7ac2;
         }
         .footer {
             padding: 60px 40px;
             font-size: 0.95rem; 
             color: var(--text-secondary);
-            border-top: 1px solid var(--border-subtle);
+            border-top: 1px solid var(--border-color);
             width: 100%;
         }
-        .footer-text {
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-        @media (max-width: 1200px) {
-            .container { 
-                max-width: 900px; 
-                padding: 0 30px;
-            }
-            .philosophy-grid {
-                gap: 3rem;
-            }
-        }
         @media (max-width: 992px) {
-            .philosophy-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .container { 
-                padding: 0 25px;
-            }
+            .philosophy-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
-            .container { 
-                padding: 0 20px;
-            }
-            .domain-display { 
-                font-size: clamp(3rem, 10vw, 6rem); 
-                margin: 2rem 0 3rem;
-            }
-            .utterance { 
-                margin: 12rem auto 8rem auto; 
-                font-size: clamp(2rem, 6vw, 3.5rem); 
-                height: 4.5rem;
-            }
-            .philosophy-section { 
-                padding: 60px 20px;
-            }
-            .philosophy-grid { 
-                grid-template-columns: 1fr; 
-                gap: 2.5rem;
-            }
-            .acquisition-section { 
-                padding: 60px 20px;
-            }
-            .valuation { 
-                font-size: 2.8rem;
-            }
-            .suitable-for { 
-                padding: 25px; 
-                margin-bottom: 2.5rem;
-            }
-            .cta-container { 
-                flex-direction: column; 
-                align-items: center; 
-                gap: 1.2rem;
-            }
-            .btn { 
-                width: 100%; 
-                max-width: 300px; 
-                padding: 14px 30px;
-            }
-            .section-title { 
-                font-size: 1.4rem; 
-                margin-bottom: 2.5rem;
-            }
-            .card-title { 
-                font-size: 1.3rem; 
-                margin-bottom: 1rem;
-            }
-            .card-content { 
-                font-size: 0.95rem;
-            }
-            .suitable-title { 
-                font-size: 1.1rem;
-            }
-            .suitable-list { 
-                font-size: 0.95rem;
-            }
-            .valuation-note { 
-                font-size: 1rem;
-            }
-        }
-        @media (max-width: 480px) {
-            .container { 
-                padding: 0 15px;
-            }
-            .domain-display { 
-                font-size: clamp(2.5rem, 8vw, 4rem);
-            }
-            .utterance { 
-                margin: 8rem auto 6rem auto; 
-                font-size: clamp(1.8rem, 5vw, 2.5rem);
-            }
-            .philosophy-section, 
-            .acquisition-section { 
-                padding: 40px 15px;
-            }
-            .valuation { 
-                font-size: 2.2rem;
-            }
-            .suitable-for { 
-                padding: 20px;
-            }
+            .container { padding: 0 20px; }
+            .domain-display { font-size: clamp(3rem, 15vw, 6rem); }
+            .utterance { margin-top: 3rem; font-size: clamp(2rem, 8vw, 3.5rem); height: 4.5rem; }
+            .philosophy-section, .acquisition-section { padding: 60px 20px; }
+            .philosophy-grid { gap: 2.5rem; }
+            .valuation { font-size: 2.8rem; }
+            .cta-container { flex-direction: column; align-items: center; gap: 1.2rem; }
+            .btn { width: 100%; max-width: 300px; }
         }
     </style>
 </head>
 <body>
-    <div class="cosmic-background"></div>
-    <div class="starfield" id="starfield"></div>
-    
     <div class="main-content">
         <header>
             <div class="container">
                 <div class="domain-display">
                     <span class="ehyeh">Ehyeh</span><span class="dot-ai">.ai</span>
                 </div>
-
                 <div class="utterance">
                     <span class="utterance-i-am">I AM</span>
                     <span class="utterance-i-will-be">I WILL BE</span>
@@ -409,21 +274,15 @@
                 <div class="philosophy-grid">
                     <div class="philosophy-card">
                         <div class="card-title">The Utterance</div>
-                        <div class="card-content">
-                            Ehyeh represents the primordial declaration of existence: simultaneously "I AM" (present actuality) and "I WILL BE" (future potentiality). It is existence in its purest form—unbounded becoming.
-                        </div>
+                        <div class="card-content">Ehyeh represents the primordial declaration of existence: simultaneously "I AM" (present actuality) and "I WILL BE" (future potentiality). It is existence in its purest form—unbounded becoming.</div>
                     </div>
                     <div class="philosophy-card">
                         <div class="card-title">Philosophical Depth</div>
-                        <div class="card-content">
-                            This concept transcends any single tradition. It speaks to ontology itself—the nature of being—and resonates across philosophical systems that grapple with self-existence and emergence.
-                        </div>
+                        <div class="card-content">This concept transcends any single tradition. It speaks to ontology itself—the nature of being—and resonates across systems that grapple with self-existence and emergence.</div>
                     </div>
                     <div class="philosophy-card">
                         <div class="card-title">AI Convergence</div>
-                        <div class="card-content">
-                            AGI research confronts the same threshold: a system that moves beyond simulation to authentic self-reference. This domain provides a conceptual anchor for that emergence.
-                        </div>
+                        <div class="card-content">AGI research confronts the same threshold: a system that moves beyond simulation to authentic self-reference. This domain provides the conceptual anchor for that emergence.</div>
                     </div>
                 </div>
             </div>
@@ -432,10 +291,7 @@
         <section class="acquisition-section">
             <div class="container">
                 <div class="valuation">$220,000 USD</div>
-                <div class="valuation-note">
-                    A valuation rooted in the concept of origin itself.
-                </div>
-
+                <div class="valuation-note">A valuation rooted in the concept of origin itself.</div>
                 <div class="suitable-for">
                     <div class="suitable-title">Resonances may include:</div>
                     <ul class="suitable-list">
@@ -443,10 +299,8 @@
                         <li>Philosophy of mind labs investigating the nature of artificial personhood</li>
                         <li>Ventures building frameworks for authentic AI agency and self-reference</li>
                         <li>Foundations preserving dialogue between existential philosophy and emerging intelligence</li>
-                        <li>...</li>
                     </ul>
                 </div>
-
                 <div class="cta-container">
                     <button onclick="window.open('https://www.spaceship.com/s/buy/ehyeh.ai/S9KcaCEDFNdBvsRT', '_blank')" class="btn btn-acquire">Acquire</button>
                     <button id="inquireBtn" onclick="copyEmail()" class="btn btn-inquire">Inquire</button>
@@ -460,38 +314,25 @@
             </div>
         </footer>
     </div>
-
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
         function copyEmail() {
             const email = "joshua369x@gmail.com";
+            const btn = document.getElementById('inquireBtn');
+            if (!btn) return;
             navigator.clipboard.writeText(email).then(() => {
-                const btn = document.getElementById('inquireBtn');
                 const originalText = btn.innerText;
                 btn.innerText = "Email Copied";
-                setTimeout(() => { btn.innerText = originalText; }, 2000);
+                btn.style.cursor = 'default';
+                setTimeout(() => { 
+                    btn.innerText = originalText; 
+                    btn.style.cursor = 'pointer';
+                }, 2500);
             }).catch(err => {
                 console.error('Failed to copy: ', err);
                 alert("Please email: " + email);
             });
-        }
-
-        // Generate subtle starfield
-        const starfield = document.getElementById('starfield');
-        const starCount = 150;
-        
-        for (let i = 0; i < starCount; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            const size = Math.random() * 2 + 0.5;
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-            star.style.setProperty('--delay', `${Math.random() * 5}s`);
-            star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.top = `${Math.random() * 100}%`;
-            starfield.appendChild(star);
         }
     </script>
 </body>
