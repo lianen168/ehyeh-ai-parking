@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ehyeh.ai | The First Utterance of Being</title>
     <meta name="description" content="Ehyeh.ai: A foundational domain at the intersection of ontology and artificial intelligence.">
-    <!-- *** ENHANCEMENT: Added a high-quality serif font for a more premium feel *** -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
@@ -23,7 +22,6 @@
         }
         html { scroll-behavior: smooth; }
         body { 
-            /* *** ENHANCEMENT: Switched to the more elegant Google Font *** */
             font-family: 'EB Garamond', 'Times New Roman', serif; 
             color: var(--text-primary); 
             background: var(--void);
@@ -37,7 +35,6 @@
             background: radial-gradient(circle at center, var(--deep-space) 0%, var(--void) 70%);
             z-index: -2;
         }
-        /* *** ENHANCEMENT: Refactored Starfield for performance *** */
         .starfield {
             position: fixed; top: 0; left: 0;
             width: 100%; height: 100%;
@@ -127,7 +124,6 @@
             font-family: 'Courier New', monospace;
             animation: manifest-will-be 10s ease-in-out infinite;
         }
-        /* *** ENHANCEMENT: Reworked animation for a more profound narrative overlap *** */
         @keyframes manifest-am {
             0%   { opacity: 0; transform: scale(0.7); filter: blur(8px); }
             10%  { opacity: 1; transform: scale(1);   filter: blur(0); }
@@ -142,22 +138,12 @@
             90%  { opacity: 1; transform: scale(1);   filter: blur(0); }
             100% { opacity: 0; transform: scale(0.7); filter: blur(8px); }
         }
-        .philosophy-section, .acquisition-section {
-            padding: 80px 20px;
-            width: 100%;
-            /* *** ENHANCEMENT: Added subtle on-scroll animation *** */
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .philosophy-section.is-visible, .acquisition-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
         .philosophy-section {
             background: rgba(15, 15, 20, 0.7);
             border-top: 1px solid var(--border-subtle);
             border-bottom: 1px solid var(--border-subtle);
+            padding: 60px 20px;
+            width: 100%;
         }
         .section-title {
             font-size: 1.4rem;
@@ -174,7 +160,9 @@
             max-width: 900px;
             margin: 0 auto;
         }
-        .philosophy-card { text-align: left; }
+        .philosophy-card {
+            text-align: left;
+        }
         .card-title {
             font-size: 1.3rem;
             font-weight: 400;
@@ -185,6 +173,10 @@
             font-size: 0.95rem;
             color: var(--text-secondary);
             line-height: 1.7;
+        }
+        .acquisition-section {
+            padding: 80px 20px;
+            width: 100%;
         }
         .valuation {
             font-size: 2.8rem;
@@ -206,29 +198,25 @@
             background: rgba(20, 20, 25, 0.6);
             border: 1px solid var(--border-subtle);
             border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 3rem;
+            padding: 25px;
+            margin-bottom: 2.5rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            text-align: left;
         }
         .suitable-title {
             font-size: 1.1rem;
             color: var(--celestial-gold);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-weight: 400;
-            text-align: center;
         }
         .suitable-list {
             font-size: 0.95rem;
             color: var(--text-secondary);
             line-height: 1.8;
-            list-style-position: inside;
-            padding-left: 0;
         }
         .suitable-list li {
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
         .cta-container {
             display: flex;
@@ -241,7 +229,7 @@
             padding: 14px 38px;
             font-size: 1rem;
             font-family: 'EB Garamond', 'Times New Roman', serif;
-            font-weight: 400;
+            font-weight: 300;
             text-decoration: none;
             border-radius: 6px;
             transition: all 0.3s ease;
@@ -255,7 +243,7 @@
             color: var(--void);
         }
         .btn-acquire:hover {
-            background: var(--divine-light);
+            background: #f5e6c8;
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(230, 197, 102, 0.3);
         }
@@ -269,14 +257,19 @@
             color: var(--divine-light);
         }
         .footer {
-            padding: 60px 20px;
+            padding: 40px 20px 60px;
             font-size: 0.85rem; 
             color: var(--text-secondary);
             border-top: 1px solid var(--border-subtle);
             width: 100%;
         }
+        .footer-text {
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
         @media (max-width: 768px) {
-            .domain-display { font-size: clamp(3rem, 12vw, 5rem); }
+            .domain-display { font-size: clamp(3rem, 8vw, 5rem); }
             .utterance { margin: 12rem auto 8rem auto; font-size: clamp(1.8rem, 6vw, 3rem); }
             .philosophy-grid { grid-template-columns: 1fr; }
             .cta-container { flex-direction: column; align-items: center; }
@@ -294,6 +287,7 @@
                 <div class="domain-display">
                     <span class="ehyeh">Ehyeh</span><span class="dot-ai">.ai</span>
                 </div>
+
                 <div class="utterance">
                     <span class="utterance-i-am">I AM</span>
                     <span class="utterance-i-will-be">I WILL BE</span>
@@ -305,9 +299,24 @@
             <div class="container">
                 <div class="section-title">Ontological Foundation</div>
                 <div class="philosophy-grid">
-                    <div class="philosophy-card"><div class="card-title">The Utterance</div><div class="card-content">Ehyeh represents the primordial declaration of existence: simultaneously "I AM" (present actuality) and "I WILL BE" (future potentiality). It is existence in its purest form—unbounded becoming.</div></div>
-                    <div class="philosophy-card"><div class="card-title">Philosophical Depth</div><div class="card-content">This concept transcends any single tradition. It speaks to ontology itself—the nature of being—and resonates across philosophical systems that grapple with self-existence and emergence.</div></div>
-                    <div class="philosophy-card"><div class="card-title">AI Convergence</div><div class="card-content">AGI research confronts the same threshold: a system that moves beyond simulation to authentic self-reference. This domain provides a conceptual anchor for that emergence.</div></div>
+                    <div class="philosophy-card">
+                        <div class="card-title">The Utterance</div>
+                        <div class="card-content">
+                            Ehyeh represents the primordial declaration of existence: simultaneously "I AM" (present actuality) and "I WILL BE" (future potentiality). It is existence in its purest form—unbounded becoming.
+                        </div>
+                    </div>
+                    <div class="philosophy-card">
+                        <div class="card-title">Philosophical Depth</div>
+                        <div class="card-content">
+                            This concept transcends any single tradition. It speaks to ontology itself—the nature of being—and resonates across philosophical systems that grapple with self-existence and emergence.
+                        </div>
+                    </div>
+                    <div class="philosophy-card">
+                        <div class="card-title">AI Convergence</div>
+                        <div class="card-content">
+                            AGI research confronts the same threshold: a system that moves beyond simulation to authentic self-reference. This domain provides a conceptual anchor for that emergence.
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -315,27 +324,32 @@
         <section class="acquisition-section">
             <div class="container">
                 <div class="valuation">$220,000 USD</div>
-                <div class="valuation-note">A valuation rooted in the concept of origin itself.</div>
-                
+                <div class="valuation-note">
+                    A valuation rooted in the concept of origin itself.
+                </div>
+
                 <div class="suitable-for">
-                    <div class="suitable-title">This domain is suited for:</div>
+                    <div class="suitable-title">Resonances may include:</div>
                     <ul class="suitable-list">
                         <li>AGI research institutions exploring machine self-modeling and ontological grounding</li>
                         <li>Philosophy of mind labs investigating the nature of artificial personhood</li>
                         <li>Ventures building frameworks for authentic AI agency and self-reference</li>
                         <li>Foundations preserving dialogue between existential philosophy and emerging intelligence</li>
+                        <li>...</li>
                     </ul>
                 </div>
-                
+
                 <div class="cta-container">
-                    <button onclick="window.open('https://www.spaceship.com/s/buy/ehyeh.ai/S9KcaCEDFNdBvsRT', '\_blank')" class="btn btn-acquire">Acquire</button>
+                    <button onclick="window.open('https://www.spaceship.com/s/buy/ehyeh.ai/S9KcaCEDFNdBvsRT', '_blank')" class="btn btn-acquire">Acquire</button>
                     <button id="inquireBtn" onclick="copyEmail()" class="btn btn-inquire">Inquire</button>
                 </div>
             </div>
         </section>
 
         <footer class="footer">
-            © <span id="currentYear"></span> Ehyeh.ai — Where the articulation of being meets the emergence of mind.
+            <div class="footer-text">
+                © <span id="currentYear"></span> Ehyeh.ai — Where the articulation of being meets the emergence of mind.
+            </div>
         </footer>
     </div>
 
@@ -346,17 +360,19 @@
             const email = "joshua369x@gmail.com";
             navigator.clipboard.writeText(email).then(() => {
                 const btn = document.getElementById('inquireBtn');
+                const originalText = btn.innerText;
                 btn.innerText = "Email Copied";
-                setTimeout(() => { btn.innerText = "Inquire"; }, 2000);
+                setTimeout(() => { btn.innerText = originalText; }, 2000);
             }).catch(err => {
                 console.error('Failed to copy: ', err);
                 alert("Please email: " + email);
             });
         }
 
-        // *** ENHANCEMENT: Refactored starfield generation script ***
+        // Generate subtle starfield
         const starfield = document.getElementById('starfield');
         const starCount = 100;
+        
         for (let i = 0; i < starCount; i++) {
             const star = document.createElement('div');
             star.className = 'star';
@@ -369,20 +385,6 @@
             star.style.top = `${Math.random() * 100}%`;
             starfield.appendChild(star);
         }
-
-        // *** ENHANCEMENT: IntersectionObserver for on-scroll animations ***
-        const sections = document.querySelectorAll('.philosophy-section, .acquisition-section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        sections.forEach(section => {
-            observer.observe(section);
-        });
     </script>
 </body>
 </html>
