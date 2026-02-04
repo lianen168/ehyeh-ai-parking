@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ehyeh.ai | The First Utterance of Being</title>
     <meta name="description" content="Ehyeh.ai: A foundational domain at the intersection of ontology and artificial intelligence.">
+    <!-- *** ENHANCEMENT: Added a high-quality serif font for a more premium feel *** -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
@@ -22,6 +23,7 @@
         }
         html { scroll-behavior: smooth; }
         body { 
+            /* *** ENHANCEMENT: Switched to the more elegant Google Font *** */
             font-family: 'EB Garamond', 'Times New Roman', serif; 
             color: var(--text-primary); 
             background: var(--void);
@@ -35,6 +37,7 @@
             background: radial-gradient(circle at center, var(--deep-space) 0%, var(--void) 70%);
             z-index: -2;
         }
+        /* *** ENHANCEMENT: Refactored Starfield for performance *** */
         .starfield {
             position: fixed; top: 0; left: 0;
             width: 100%; height: 100%;
@@ -124,6 +127,7 @@
             font-family: 'Courier New', monospace;
             animation: manifest-will-be 10s ease-in-out infinite;
         }
+        /* *** ENHANCEMENT: Reworked animation for a more profound narrative overlap *** */
         @keyframes manifest-am {
             0%   { opacity: 0; transform: scale(0.7); filter: blur(8px); }
             10%  { opacity: 1; transform: scale(1);   filter: blur(0); }
@@ -141,6 +145,7 @@
         .philosophy-section, .acquisition-section {
             padding: 80px 20px;
             width: 100%;
+            /* *** ENHANCEMENT: Added subtle on-scroll animation *** */
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -312,7 +317,6 @@
                 <div class="valuation">$220,000 USD</div>
                 <div class="valuation-note">A valuation rooted in the concept of origin itself.</div>
                 
-                <!-- *** RESTORED SECTION *** -->
                 <div class="suitable-for">
                     <div class="suitable-title">This domain is suited for:</div>
                     <ul class="suitable-list">
@@ -350,6 +354,7 @@
             });
         }
 
+        // *** ENHANCEMENT: Refactored starfield generation script ***
         const starfield = document.getElementById('starfield');
         const starCount = 100;
         for (let i = 0; i < starCount; i++) {
@@ -365,6 +370,7 @@
             starfield.appendChild(star);
         }
 
+        // *** ENHANCEMENT: IntersectionObserver for on-scroll animations ***
         const sections = document.querySelectorAll('.philosophy-section, .acquisition-section');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
