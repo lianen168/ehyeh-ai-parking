@@ -7,14 +7,14 @@
     <meta name="description" content="Ehyeh.ai: A foundational domain at the intersection of ontology and artificial intelligence.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <!-- ADDED IBM Plex Mono for the "I WILL BE" text -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #f4f4f7;
             --text-primary: #1a1a2e;
             --text-secondary: #5a5a6e;
-            /* --- NEW: Gold + Blue Palette --- */
-            --accent-gold: #c7a444; /* A refined, less saturated gold */
+            --accent-gold: #c7a444;
             --accent-celestial: #5c95e6;
             --gold-glow: rgba(199, 164, 68, 0.25);
             --card-bg: rgba(255, 255, 255, 0.9);
@@ -49,7 +49,7 @@
             padding: 40px 20px;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Vertically centers content */
+            justify-content: center;
             align-items: center;
         }
         .domain-display {
@@ -81,25 +81,56 @@
             position: absolute;
             width: 100%;
             left: 0;
+            top: 0;
             opacity: 0;
-            transform: scale(0.7);
-            filter: blur(8px);
         }
+        /* --- NEW ANIMATION for "I AM" --- */
         .utterance-i-am {
             font-family: 'EB Garamond', 'Times New Roman', serif;
-            animation: manifest-am 10s ease-in-out infinite;
+            animation: divine-reveal 10s ease-in-out infinite;
         }
+        @keyframes divine-reveal {
+            0%   { opacity: 0; text-shadow: 0 0 20px var(--gold-glow); filter: blur(10px); }
+            10%  { opacity: 0.6; text-shadow: 0 0 5px var(--gold-glow); filter: blur(0); }
+            40%  { opacity: 0.6; text-shadow: 0 0 5px var(--gold-glow); filter: blur(0); }
+            50%  { opacity: 0; text-shadow: 0 0 20px var(--gold-glow); filter: blur(10px); }
+            100% { opacity: 0; }
+        }
+        /* --- NEW ANIMATION & FONT for "I WILL BE" --- */
         .utterance-i-will-be {
-            font-family: 'Courier New', monospace;
+            font-family: 'IBM Plex Mono', monospace; /* New font */
             animation: manifest-will-be 10s ease-in-out infinite;
         }
-        @keyframes manifest-am {
-            0%, 50%, 100% { opacity: 0; transform: scale(0.7); filter: blur(8px); }
-            10%, 40% { opacity: 0.6; transform: scale(1); filter: blur(0); }
+        .utterance-i-will-be::before,
+        .utterance-i-will-be::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            overflow: hidden;
+        }
+        .utterance-i-will-be::before {
+            left: 2px;
+            text-shadow: -1px 0 var(--accent-celestial);
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+        .utterance-i-will-be::after {
+            left: -2px;
+            text-shadow: -1px 0 var(--accent-gold), 1px 0 var(--accent-celestial);
+            animation: glitch-anim-2 2s infinite linear alternate-reverse;
         }
         @keyframes manifest-will-be {
-            0%, 50%, 100% { opacity: 0; transform: scale(0.7); filter: blur(8px); }
-            60%, 90% { opacity: 0.6; transform: scale(1); filter: blur(0); }
+            0%, 50%, 100% { opacity: 0; }
+            60%, 90% { opacity: 0.6; }
+        }
+        @keyframes glitch-anim-1 {
+            0% { clip-path: inset(15% 0 86% 0); } 25% { clip-path: inset(46% 0 44% 0); } 50% { clip-path: inset(23% 0 17% 0); } 75% { clip-path: inset(68% 0 12% 0); } 100% { clip-path: inset(33% 0 60% 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip-path: inset(78% 0 2% 0); } 25% { clip-path: inset(14% 0 44% 0); } 50% { clip-path: inset(93% 0 7% 0); } 75% { clip-path: inset(48% 0 52% 0); } 100% { clip-path: inset(23% 0 1% 0); }
         }
         .philosophy-section {
             background: #fff;
@@ -239,9 +270,7 @@
             border-top: 1px solid var(--border-color);
             width: 100%;
         }
-        @media (max-width: 992px) {
-            .philosophy-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 992px) { .philosophy-grid { grid-template-columns: 1fr; } }
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
             .domain-display { font-size: clamp(3rem, 15vw, 6rem); }
@@ -263,7 +292,7 @@
                 </div>
                 <div class="utterance">
                     <span class="utterance-i-am">I AM</span>
-                    <span class="utterance-i-will-be">I WILL BE</span>
+                    <span class="utterance-i-will-be" data-text="I WILL BE">I WILL BE</span>
                 </div>
             </div>
         </header>
@@ -299,6 +328,8 @@
                         <li>Philosophy of mind labs investigating the nature of artificial personhood</li>
                         <li>Ventures building frameworks for authentic AI agency and self-reference</li>
                         <li>Foundations preserving dialogue between existential philosophy and emerging intelligence</li>
+                        <!-- ADDED the ellipsis -->
+                        <li>...</li>
                     </ul>
                 </div>
                 <div class="cta-container">
