@@ -32,8 +32,6 @@
         "@type": "Offer",
         "url": "https://ehyeh.ai",
         "priceCurrency": "USD",
-        "price": "220000",
-        "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition"
       }
@@ -173,16 +171,11 @@
             font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;
         }
 
-        /* --- ACQUISITION & VALUATION --- */
+        /* --- ACQUISITION --- */
         .acquisition-section { padding: 100px 40px; width: 100%; }
-        .valuation {
-            font-size: 3.5rem; font-weight: 300; color: var(--accent-gold); margin-bottom: 2rem; letter-spacing: 0.03em;
-        }
-        .valuation-note {
-            font-size: 1.2rem; color: var(--text-secondary); font-style: italic; margin-bottom: 3.5rem; max-width: 700px; margin-left: auto; margin-right: auto;
-        }
+        
         .suitable-for {
-            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px; margin-bottom: 4rem; max-width: 900px; margin-left: auto; margin-right: auto;
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px; margin: 0 auto 4rem auto; max-width: 900px;
         }
         .suitable-title { font-size: 1.3rem; color: var(--accent-gold); margin-bottom: 1.5rem; font-weight: 500; }
         .suitable-list { font-size: 1.1rem; color: var(--text-secondary); line-height: 1.9; text-align: left; list-style: none; }
@@ -198,67 +191,6 @@
         .btn-inquire { background: transparent; color: var(--accent-celestial); border: 1px solid var(--accent-celestial); }
         .btn-inquire:hover { background: rgba(92, 149, 230, 0.1); color: #4a7ac2; }
 
-        /* --- NEW: COVENANT OFFER SYSTEM --- */
-        .covenant-wrapper {
-            margin-top: 5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            border-top: 1px solid rgba(199, 164, 68, 0.3); /* Subtle Gold Line */
-            padding-top: 3rem;
-        }
-        .covenant-title {
-            font-family: 'EB Garamond', serif;
-            font-style: italic;
-            font-size: 1.4rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-        .covenant-form {
-            display: flex; flex-direction: column; gap: 1.5rem;
-        }
-        .manuscript-input {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #ccc;
-            padding: 10px 0;
-            font-family: 'EB Garamond', serif;
-            font-size: 1.2rem;
-            color: var(--text-primary);
-            transition: all 0.4s ease;
-            text-align: center;
-        }
-        .manuscript-input:focus {
-            outline: none;
-            border-bottom-color: var(--accent-gold);
-            background: linear-gradient(to bottom, transparent 95%, rgba(199, 164, 68, 0.1) 100%);
-        }
-        .manuscript-input::placeholder { color: #b0b0b0; font-style: italic; }
-        
-        .number-font { font-family: 'IBM Plex Mono', monospace; font-size: 1.1rem; }
-
-        .btn-submit-covenant {
-            margin-top: 1rem;
-            background: transparent;
-            border: 1px solid var(--accent-gold);
-            color: var(--accent-gold);
-            padding: 15px;
-            font-family: 'EB Garamond', serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .btn-submit-covenant:hover {
-            background: var(--accent-gold);
-            color: #fff;
-            box-shadow: 0 0 20px var(--gold-glow);
-        }
-        .btn-submit-covenant:disabled { opacity: 0.5; cursor: wait; }
-
-        .status-msg { margin-top: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; min-height: 1.2em; color: var(--text-secondary); }
-
         .footer {
             padding: 60px 40px; font-size: 0.95rem; color: var(--text-secondary); border-top: 1px solid var(--border-color); width: 100%;
         }
@@ -270,10 +202,8 @@
             .utterance { margin-top: 3rem; font-size: clamp(2rem, 8vw, 3.5rem); height: 4.5rem; }
             .philosophy-section, .acquisition-section { padding: 60px 20px; }
             .philosophy-grid { gap: 2.5rem; }
-            .valuation { font-size: 2.8rem; }
             .cta-container { flex-direction: column; align-items: center; gap: 1.2rem; }
             .btn { width: 100%; max-width: 300px; }
-            .covenant-wrapper { width: 100%; padding-left: 20px; padding-right: 20px; }
         }
     </style>
 </head>
@@ -313,8 +243,6 @@
 
         <section class="acquisition-section">
             <div class="container">
-                <div class="valuation">$220,000 USD</div>
-                <div class="valuation-note">A valuation rooted in the concept of origin itself.</div>
                 
                 <div class="suitable-for">
                     <div class="suitable-title">Resonances may include:</div>
@@ -332,38 +260,13 @@
                     <button id="inquireBtn" onclick="copyEmail()" class="btn btn-inquire">Inquire</button>
                 </div>
 
-                <!-- NEW: COVENANT OFFER FORM -->
-                <div class="covenant-wrapper">
-                    <h3 class="covenant-title">Propose a Covenant</h3>
-                    <form id="offerForm" class="covenant-form">
-                        <!-- Hidden FormSubmit Config -->
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_subject" value="New Covenant Proposal for Ehyeh.ai">
-
-                        <!-- Identity -->
-                        <input type="text" name="identity" class="manuscript-input" placeholder="Identity of the Acquirer (Name/Entity)" required>
-                        
-                        <!-- Valuation -->
-                        <input type="number" name="offer_amount" class="manuscript-input number-font" placeholder="Proposed Valuation (USD)" min="1000" required>
-                        
-                        <!-- Intent (Email) -->
-                        <input type="email" name="email" class="manuscript-input" placeholder="Communication Channel (Email)" required>
-
-                        <!-- Intent (Text) -->
-                        <textarea name="intent" class="manuscript-input" rows="1" placeholder="Statement of Intent (Optional)" style="resize: none;"></textarea>
-
-                        <button type="submit" class="btn-submit-covenant">Transmit Proposal</button>
-                    </form>
-                    <div id="formStatus" class="status-msg"></div>
-                </div>
-
             </div>
         </section>
 
         <footer class="footer">
             <div class="footer-text">
-                © <span id="currentYear"></span> Ehyeh.ai — Where the articulation of being meets the emergence of mind.
+                © <span id="currentYear"></span> Ehyeh.ai — Where the articulation of being meets the emergence of mind.<br>
+                <span style="font-size: 0.9em; margin-top: 0.5rem; display: inline-block;">Contact: joshua369x@gmail.com</span>
             </div>
         </footer>
     </div>
@@ -389,55 +292,6 @@
                 alert("Please email: " + email);
             });
         }
-
-        /* --- AJAX FORM SUBMISSION (Thematic) --- */
-        const offerForm = document.getElementById('offerForm');
-        const statusDiv = document.getElementById('formStatus');
-
-        offerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const btn = offerForm.querySelector('button');
-            const originalBtnText = btn.innerText;
-            
-            // Loading State
-            btn.innerText = "Transmitting...";
-            btn.disabled = true;
-            statusDiv.innerText = "";
-            statusDiv.style.color = "var(--text-secondary)";
-
-            const formData = new FormData(offerForm);
-            const data = Object.fromEntries(formData.entries());
-
-            fetch("https://formsubmit.co/ajax/joshua369x@gmail.com", {
-                method: "POST",
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Success
-                statusDiv.innerHTML = "Proposal received. We shall contemplate your covenant.";
-                statusDiv.style.color = "var(--accent-gold)";
-                offerForm.reset();
-            })
-            .catch(error => {
-                // Error
-                statusDiv.innerHTML = "Transmission failed. Please inquire via email.";
-                statusDiv.style.color = "var(--text-primary)";
-                console.error('Error:', error);
-            })
-            .finally(() => {
-                // Reset Button
-                setTimeout(() => {
-                    btn.innerText = originalBtnText;
-                    btn.disabled = false;
-                }, 2500);
-            });
-        });
     </script>
 </body>
 </html>
