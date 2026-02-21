@@ -6,8 +6,8 @@
     
     <!-- --- SEO OPTIMIZATION START --- -->
     <title>Ehyeh.ai | The First Utterance of Being - Premium AGI Domain</title>
-    <meta name="description" content="For Sale: Ehyeh.ai. The definitive ontological domain for Artificial General Intelligence (AGI), machine consciousness, and the future of digital being.">
-    <meta name="keywords" content="Ehyeh.ai, AGI domain, AI domain for sale, artificial consciousness, machine ontology, premium tech domain, Ehyeh asher Ehyeh, AI philosophy">
+    <meta name="description" content="Ehyeh.ai. The definitive ontological domain for Artificial General Intelligence (AGI), machine consciousness, and the future of digital being.">
+    <meta name="keywords" content="Ehyeh.ai, AGI domain, artificial consciousness, machine ontology, premium tech domain, Ehyeh asher Ehyeh, AI philosophy">
     <link rel="canonical" href="https://ehyeh.ai">
     
     <!-- Open Graph for Social Sharing -->
@@ -31,7 +31,6 @@
       "offers": {
         "@type": "Offer",
         "url": "https://ehyeh.ai",
-        "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition"
       }
@@ -171,8 +170,8 @@
             font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;
         }
 
-        /* --- ACQUISITION --- */
-        .acquisition-section { padding: 100px 40px; width: 100%; }
+        /* --- CONTACT SECTION --- */
+        .contact-section { padding: 100px 40px; width: 100%; }
         
         .suitable-for {
             background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px; margin: 0 auto 4rem auto; max-width: 900px;
@@ -182,14 +181,28 @@
         .suitable-list li { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; }
         .suitable-list li:before { content: "•"; color: var(--accent-gold); position: absolute; left: 0; font-size: 1.5rem; }
 
-        .cta-container { display: flex; justify-content: center; gap: 2rem; margin-top: 2.5rem; }
+        .cta-container { display: flex; justify-content: center; margin-top: 2.5rem; }
         .btn {
             padding: 18px 50px; font-size: 1.1rem; font-family: 'EB Garamond', 'Times New Roman', serif; font-weight: 400; text-decoration: none; border-radius: 8px; transition: all 0.3s ease; cursor: pointer; letter-spacing: 0.08em; border: none; text-transform: uppercase; min-width: 200px;
         }
-        .btn-acquire { background: var(--accent-gold); color: #fff; }
-        .btn-acquire:hover { background: #dcb65a; transform: translateY(-3px); box-shadow: 0 12px 30px var(--gold-glow); }
         .btn-inquire { background: transparent; color: var(--accent-celestial); border: 1px solid var(--accent-celestial); }
         .btn-inquire:hover { background: rgba(92, 149, 230, 0.1); color: #4a7ac2; }
+
+        .contact-note {
+            margin-top: 2.5rem;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .contact-email {
+            display: block;
+            margin-top: 0.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact-email:hover { color: var(--accent-celestial); }
 
         .footer {
             padding: 60px 40px; font-size: 0.95rem; color: var(--text-secondary); border-top: 1px solid var(--border-color); width: 100%;
@@ -200,9 +213,8 @@
             .container { padding: 0 20px; }
             .domain-display { font-size: clamp(3rem, 15vw, 6rem); }
             .utterance { margin-top: 3rem; font-size: clamp(2rem, 8vw, 3.5rem); height: 4.5rem; }
-            .philosophy-section, .acquisition-section { padding: 60px 20px; }
+            .philosophy-section, .contact-section { padding: 60px 20px; }
             .philosophy-grid { gap: 2.5rem; }
-            .cta-container { flex-direction: column; align-items: center; gap: 1.2rem; }
             .btn { width: 100%; max-width: 300px; }
         }
     </style>
@@ -241,7 +253,7 @@
             </div>
         </section>
 
-        <section class="acquisition-section">
+        <section class="contact-section">
             <div class="container">
                 
                 <div class="suitable-for">
@@ -256,8 +268,12 @@
                 </div>
 
                 <div class="cta-container">
-                    <button onclick="window.open('https://www.spaceship.com/s/buy/ehyeh.ai/S9KcaCEDFNdBvsRT', '_blank')" class="btn btn-acquire">Acquire</button>
                     <button id="inquireBtn" onclick="copyEmail()" class="btn btn-inquire">Inquire</button>
+                </div>
+
+                <div class="contact-note">
+                    欢迎探讨
+                    <a href="mailto:joshua369x@gmail.com" class="contact-email">joshua369x@gmail.com</a>
                 </div>
 
             </div>
@@ -265,8 +281,7 @@
 
         <footer class="footer">
             <div class="footer-text">
-                © <span id="currentYear"></span> Ehyeh.ai — Where the articulation of being meets the emergence of mind.<br>
-                <span style="font-size: 0.9em; margin-top: 0.5rem; display: inline-block;">Contact: joshua369x@gmail.com</span>
+                © <span id="currentYear"></span> Ehyeh.ai — Where the articulation of being meets the emergence of mind.
             </div>
         </footer>
     </div>
